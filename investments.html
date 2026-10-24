@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investments - CashTank Financial Planner</title>
+  <meta name="description" content="Add financial institutions, accounts and investments with their asset class, mix, cost basis and starting balance.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html" class="active" aria-current="page">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>Investments <span class="badge preview">Preview</span></h1>
+<p class="lead">Your money is organized in three levels: the <strong>financial institutions</strong> you use, the
+<strong>accounts</strong> at each one, and the <strong>investments</strong> held in each account.</p>
+
+<div class="callout preview">
+  <span class="title">Screen in progress</span>
+  The picture is a mockup. The fields and rules are already used by the calculations.
+</div>
+
+<figure>
+  <img src="assets/img/screens/ui-investments.svg" alt="Mockup of the Investments page: institutions on the left, accounts and investments grids on the right" width="960" height="560">
+  <figcaption>Mockup: choose an institution, then an account, to see its investments.</figcaption>
+</figure>
+
+<h2 id="institutions">Financial institutions</h2>
+<p>A bank, brokerage or fund company - for example Vanguard or your local bank. Account names in drop-downs and
+results show the institution, such as "Joint Savings (Local Bank)". Deleting an institution deletes its accounts and
+investments.</p>
+
+<h2 id="accounts">Accounts</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Name</td><td>Your name for the account.</td></tr>
+    <tr><td>Type</td><td>Decides how the account is taxed and how it is used (table below).</td></tr>
+    <tr><td>Trustee</td><td>The owner: a tax payer, or <strong>Joint</strong> (only offered with two tax payers). For an IRA, 401(k) or Roth, the owner's age decides when RMDs start and when Roth conversions stop.</td></tr>
+  </tbody>
+</table></div>
+<p>Deleting an account deletes its investments. Income paid into it is left without a <em>To</em> account (pick a new
+one before running the plan), and expenses paid from it switch to Auto.</p>
+
+<div class="table-wrap"><table>
+  <thead><tr><th>Type</th><th>Tax treatment</th><th>How the planner uses it</th></tr></thead>
+  <tbody>
+    <tr><td>Savings</td><td rowspan="3">Taxable: yields are taxed every year by their asset class (interest, dividends, tax-exempt interest); sales realize capital gains or losses</td><td>Auto withdrawal 1st. First choice for the <a href="withdrawals.html#cash-account">cash account</a>.</td></tr>
+    <tr><td>Checking</td><td>Not used by Auto. Second choice for the cash account.</td></tr>
+    <tr><td>Brokerage</td><td>Auto withdrawal 2nd. Third choice for the cash account.</td></tr>
+    <tr><td>IRA</td><td>Withdrawals are ordinary income (1040 line 4a)</td><td>Auto 3rd. RMDs. Source for Roth conversions.</td></tr>
+    <tr><td>401(k)</td><td>Withdrawals are ordinary income (1040 line 5a)</td><td>Auto 4th. RMDs. Source for Roth conversions.</td></tr>
+    <tr><td>Roth</td><td>Tax free</td><td>Auto last. Receives Roth conversions.</td></tr>
+    <tr><td>HSA</td><td>Tax free</td><td>Not used by Auto; grows unless an expense names it as From.</td></tr>
+    <tr><td>529</td><td>Tax free</td><td>Not used by Auto; grows unless an expense names it as From.</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="investments">Investments</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Name, Ticker</td><td>For your reference, for example "Total Stock Market" / VTSAX.</td></tr>
+    <tr><td>Asset class</td><td><strong>Required.</strong> DomStocks, IntStocks, Bonds, MuniBonds, Gold, Cash or a class you add. It supplies the growth and yield when you leave them blank, the down-market history, and the 1040 boxes for taxable accounts. See <a href="asset-classes.html">asset classes</a>.</td></tr>
+    <tr><td>Growth</td><td>Expected price growth, % per year. Leave blank to use the asset class's long-run average (6.49% for domestic stocks).</td></tr>
+    <tr><td>Yield</td><td>Expected dividends or interest, % per year, reinvested. Leave blank to use the class average (1.75% for domestic stocks).</td></tr>
+    <tr><td>Mix</td><td>How new money paid into the account (income, Social Security, RMDs, Roth conversions) is split between its investments. The mixes in an account must add up to 100%. New investments get whatever is left.</td></tr>
+    <tr><td>Starting basis</td><td>What you paid for the investment (its cost basis). Used to work out capital gains when it is sold in a taxable account. Ignored for IRA, 401(k), Roth, HSA and 529.</td></tr>
+    <tr><td>Starting balance</td><td>Today's value.</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout note">
+  <span class="title">Growth and yield in the two markets</span>
+  In the <strong>normal market</strong> an investment uses its own Growth and Yield, or the class average when they are
+  blank. In the <strong>down market</strong> every investment follows its asset class's real history instead, starting
+  in the worst year for your holdings. See <a href="asset-classes.html#down-market">normal and down markets</a>.
+</div>
+
+<h3 id="how-balances-change">How balances change</h3>
+<ul>
+  <li>Each year an investment grows by its growth rate and earns its yield on the balance at the start of the year;
+    the yield is reinvested.</li>
+  <li>Deposits are split by Mix; withdrawals are taken in proportion to balance, and investments that lost value that
+    year are sold last. The planner does not rebalance.</li>
+  <li>Sales from taxable accounts use the average cost: a sale of 10% of an investment uses 10% of its basis.
+    Reinvested yields are added to the basis.</li>
+</ul>
+
+<h2 id="checks">Checks before a run</h2>
+<ul>
+  <li>Every investment must have an asset class, and every class you use must have complete performance history.</li>
+  <li>Each account's investment mixes must add up to 100%.</li>
+  <li>The plan needs a Savings, Checking or Brokerage account with at least one investment to receive Social Security
+    and RMDs.</li>
+</ul>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="income-expenses.html"><span>Previous</span>Income and expenses</a>
+      <a class="next" href="optimizer.html"><span>Next</span>Optimizer</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

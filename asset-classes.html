@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asset classes - growth and yield - CashTank Financial Planner</title>
+  <meta name="description" content="How asset classes, growth and yield work, the real 2000-2026 performance data, long-run averages, stitching and the down market.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html" class="active" aria-current="page">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>Asset classes: growth and yield</h1>
+<p class="lead">Every investment belongs to an asset class - domestic stocks, international stocks, bonds, municipal
+bonds, gold or cash. The class supplies real market history, long-run averages, and the tax treatment of what the
+investment earns.</p>
+
+<h2 id="growth-and-yield">Growth and yield are kept separate</h2>
+<p>An investment earns money in two ways, and the planner tracks them separately because they are taxed differently:</p>
+<ul>
+  <li><strong>Growth</strong> is the change in price. It is not taxed until you sell, and then only the gain over what
+    you paid (the cost basis) is taxed, at capital gain rates.</li>
+  <li><strong>Yield</strong> is the income the investment pays: dividends from stocks, interest from bonds and cash.
+    In a taxable account it is taxed every year, even though the planner reinvests it.</li>
+</ul>
+<p><strong>Total return</strong> is growth plus yield. A fund's published return is a total return; the planner's data
+splits it into its two parts.</p>
+
+<figure>
+  <img src="assets/img/charts/asset-bonds-yield.svg" alt="Line chart: $10,000 in the bond market grew to $26,472 with interest reinvested, but only $9,792 from price changes alone" width="760" height="320">
+  <figcaption>For bonds, nearly all of the return is yield: price growth alone left $10,000 at $9,792;
+  with interest it grew to $26,472.</figcaption>
+</figure>
+
+<h2 id="classes">The six asset classes</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Asset class</th><th>Data source</th><th>Growth reported as</th><th>Yield reported as</th></tr></thead>
+  <tbody>
+    <tr><td>DomStocks - domestic stocks</td><td>Vanguard Total Stock Market Index (VTSMX)</td><td>7a capital gain</td><td>3a qualified dividends</td></tr>
+    <tr><td>IntStocks - international stocks</td><td>Vanguard Total International Stock Index (VGTSX)</td><td>7a capital gain</td><td>3a qualified dividends</td></tr>
+    <tr><td>Bonds</td><td>Vanguard Total Bond Market Index (VBMFX)</td><td>7a capital gain</td><td>3b ordinary dividends</td></tr>
+    <tr><td>MuniBonds - municipal bonds</td><td>Vanguard Intermediate-Term Tax-Exempt (VWITX)</td><td>7a capital gain</td><td>2a tax-exempt interest</td></tr>
+    <tr><td>Gold</td><td>SPDR Gold Shares (GLD) from 2005; LBMA gold price 2000-2004</td><td>7a capital gain</td><td>none</td></tr>
+    <tr><td>Cash</td><td>Held flat: 0% growth and 0% yield</td><td>none</td><td>2b taxable interest</td></tr>
+  </tbody>
+</table></div>
+<p>The 1040 boxes matter only in taxable accounts (Savings, Checking, Brokerage). In an IRA or 401(k), withdrawals are
+ordinary income whatever the investment; in a Roth, HSA or 529 they are tax free.</p>
+
+<div class="callout note">
+  <span class="title">Municipal bonds</span>
+  Muni bond interest is free of federal income tax (line 2a), but it still counts in two places: the
+  <a href="social-security.html#taxation">Social Security tax worksheet</a> and the
+  <a href="medicare-irmaa.html#magi">MAGI used for Medicare IRMAA</a>. The planner also includes it in state taxable
+  income, as for a national muni fund held outside its home state.
+</div>
+
+<h2 id="history">Real market history, 2000-2026</h2>
+<p>Each class is loaded with 27 years of real annual growth and yield, from 2000 through 2026 (2026 is the year to
+date). Blue bars are growth, red bars are years when the price fell, green is yield, and the dot is the total return.</p>
+<figure><img src="assets/img/charts/asset-domstocks.svg" alt="Bar chart of domestic stock growth and yield by year 2000-2026" width="760" height="330"></figure>
+<figure><img src="assets/img/charts/asset-intstocks.svg" alt="Bar chart of international stock growth and yield by year 2000-2026" width="760" height="330"></figure>
+<figure><img src="assets/img/charts/asset-bonds.svg" alt="Bar chart of bond growth and yield by year 2000-2026" width="760" height="330"></figure>
+<figure><img src="assets/img/charts/asset-munibonds.svg" alt="Bar chart of municipal bond growth and yield by year 2000-2026" width="760" height="330"></figure>
+<figure><img src="assets/img/charts/asset-gold.svg" alt="Bar chart of gold price growth by year 2000-2026" width="760" height="330"></figure>
+
+<figure>
+  <img src="assets/img/charts/asset-growth-of-10k.svg" alt="Line chart: growth of $10,000 in each asset class from 2000 to 2026" width="760" height="380">
+  <figcaption>$10,000 invested at the start of 2000 with yield reinvested: domestic stocks $84,451,
+  gold $125,621, international stocks $36,623, bonds $26,472, municipal bonds
+  $26,231. Past results don't predict future ones - and the order of good and bad years matters as much
+  as the average.</figcaption>
+</figure>
+
+<h2 id="averages">Long-run averages (the normal market)</h2>
+<figure>
+  <img src="assets/img/charts/asset-averages.svg" alt="Bar chart of each asset class's compound average growth and average yield" width="760" height="384">
+</figure>
+<p>When you leave an investment's growth or yield blank, the normal market uses its class's long-run average over the
+whole history: the <strong>compound</strong> average growth (the steady rate that ends at the same place) and the
+simple average yield.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Asset class</th><th class="num">Growth</th><th class="num">Yield</th><th class="num">Total</th></tr></thead>
+  <tbody>
+    <tr><td>Domestic stocks</td><td class="num">6.49%</td><td class="num">1.75%</td><td class="num">8.25%</td></tr>
+    <tr><td>International stocks</td><td class="num">2.30%</td><td class="num">2.66%</td><td class="num">4.96%</td></tr>
+    <tr><td>Bonds</td><td class="num">-0.08%</td><td class="num">3.78%</td><td class="num">3.70%</td></tr>
+    <tr><td>Municipal bonds</td><td class="num">0.16%</td><td class="num">3.49%</td><td class="num">3.65%</td></tr>
+    <tr><td>Gold</td><td class="num">9.83%</td><td class="num">0.00%</td><td class="num">9.83%</td></tr>
+    <tr><td>Cash</td><td class="num">0.00%</td><td class="num">0.00%</td><td class="num">0.00%</td></tr>
+  </tbody>
+</table></div>
+<div class="callout tip">
+  <span class="title">Enter your own expectations</span>
+  If you think the next 30 years will differ from 2000-2026 - for example higher bond yields than the low years of the
+  2010s - type your own growth and yield into the investment. The class history is still used in the down market.
+</div>
+
+<h2 id="stitching">Stitching the history to cover the whole plan</h2>
+<figure>
+  <img src="assets/img/charts/asset-stitching.svg" alt="Bar chart: the 27-year history is repeated to fill 75 years" width="760" height="320">
+</figure>
+<p>A plan can be longer than 27 years, so the history is repeated - "stitched" - out to 75 years: history year 28 is
+2000 again, year 29 is 2001, and so on. Every class is stored the same way, with history year 1 = 2000, so the classes
+always move together exactly as they did in real life: when stocks fall in 2008, bonds do what bonds did in 2008.</p>
+
+<h2 id="down-market">Normal and down markets</h2>
+<figure>
+  <img src="assets/img/charts/market-normal-vs-down.svg" alt="Line chart comparing $1 million in a normal market and in a down market starting in 2008" width="760" height="360">
+</figure>
+<p>The <strong>down and flat market</strong> answers the question "what if the bad years come first?". The planner:</p>
+<ol>
+  <li>blends the histories of the asset classes you actually own, weighted by today's balances;</li>
+  <li>tries every possible starting year in the history and follows it for the length of your plan;</li>
+  <li>picks the start that produces the <strong>deepest fall</strong> in value at any point.</li>
+</ol>
+<p>Every investment then replays its own class's history from that year. In the example above (60% domestic stocks,
+40% bonds, 30 years) the worst start is history year 9 (2008): a 20% fall in
+the first year, then the real recovery. Even though the market later recovers, a large early loss can sink a plan
+that is withdrawing money - this is called <em>sequence of returns risk</em>, and it is why the optimizer judges
+plans by the down market.</p>
+<div class="callout note">
+  <span class="title">Your down market depends on your holdings</span>
+  The start year is chosen for <em>your</em> mix of asset classes and your plan length, so a stock-heavy plan and a
+  bond-heavy plan can get different down markets.
+</div>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="how-the-plan-works.html"><span>Previous</span>How the plan works</a>
+      <a class="next" href="taxes.html"><span>Next</span>Income taxes and deductions</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!--
+title: Required minimum distributions
+description: When RMDs start, how they are calculated from the IRS Uniform Lifetime Table, and how they affect taxes.
+-->
+<h1>Required minimum distributions (RMDs)</h1>
+<p class="lead">Traditional IRAs and 401(k)s were funded with untaxed money, so the IRS requires you to start taking
+money out - and paying tax on it - at a certain age. These required minimum distributions grow as a share of the
+account every year.</p>
+
+<h2 id="start-age">When RMDs start</h2>
+<figure>
+  <img src="assets/img/charts/rmd-start-age.svg" alt="Diagram: born 1950 or earlier, RMDs start at 72; born 1951-1959, at 73; born 1960 or later, at 75" width="760" height="170">
+</figure>
+<p>Under the SECURE 2.0 Act, the start age depends on the year of birth. The planner takes it from the account
+owner's year of birth on the <a href="tax-payers.html">Tax Payers</a> page. RMDs apply to <strong>IRA</strong> and
+<strong>401(k)</strong> accounts; Roth accounts have no RMDs for the owner.</p>
+
+<h2 id="calculation">How an RMD is calculated</h2>
+<p>For each IRA and 401(k), every year from the start age:</p>
+<p style="font-size:18px;text-align:center"><strong>RMD = balance at the end of last year &divide; divisor for your age this year</strong></p>
+<p>The divisor comes from the IRS Uniform Lifetime Table in the <a href="reference-tables.html#rmd-table">RMD
+Table</a>. At 75 it is {{rmdDiv75}}, so the RMD is {{rmdPct75}} of the balance; at 80 it is {{rmdPct80}} and at 90
+{{rmdPct90}}.</p>
+<figure>
+  <img src="assets/img/charts/rmd-percent.svg" alt="Bar chart of the RMD as a percent of the balance from age 72 to 100" width="760" height="320">
+</figure>
+
+<h2 id="example">An example</h2>
+<figure>
+  <img src="assets/img/charts/rmd-example.svg" alt="Chart of a $500,000 IRA with RMDs from age 75: RMDs grow from about $20,000 to $41,000 while the balance slowly falls" width="760" height="350">
+</figure>
+<p>A $500,000 IRA growing 5% a year has a first RMD of {{rmdEx75}} at 75. Because the percentage rises every year, the
+RMD keeps growing - {{rmdEx85}} at 85 and {{rmdEx95}} at 95 - even as the balance starts to shrink. Larger RMDs mean
+more taxable income, which can also make more of your Social Security taxable and raise your Medicare premiums.</p>
+
+<h2 id="in-the-planner">What the planner does</h2>
+<ul>
+  <li>The RMD is taken from the account's investments in proportion to their balances and paid into the
+    <a href="withdrawals.html#cash-account">cash account</a>, where it is available for spending.</li>
+  <li>It is reported on Form 1040 line 4a (IRA) or 5a (401(k)) as ordinary income.</li>
+  <li>The account owner's (trustee's) age is used. A joint account uses tax payer 1's age, and after the owner's death
+    the surviving tax payer's age is used.</li>
+  <li>If you already withdrew more than the RMD from an account, the planner still takes the RMD in the RMD step -
+    money taken by Auto later in the year does not count toward it.</li>
+</ul>
+
+<div class="callout tip">
+  <span class="title">Shrinking future RMDs</span>
+  Withdrawing or converting IRA money in the years between retirement and the RMD start age - when your income may be
+  low - lowers the balance that future RMDs are based on. That is the idea behind
+  <a href="roth-conversions.html">Roth conversions</a>, which in the planner stop when RMDs start.
+</div>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Income taxes and deductions - CashTank Financial Planner</title>
+  <meta name="description" content="Federal tax brackets, marginal and effective rates, the standard deduction, age 65+ and senior deductions, capital gains stacking, state tax and the 1040 boxes.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html" class="active" aria-current="page">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>Income taxes and deductions</h1>
+<p class="lead">Every plan year, the planner fills in a simplified Form 1040 and works out federal and state income
+tax. This chapter explains the rules it follows, using 2026 values. Each later year, the bracket edges and deductions
+rise with the <em>tax forms inflation rate</em>.</p>
+
+<h2 id="taxable-income">From income to taxable income</h2>
+<ol>
+  <li><strong>Total income</strong> (line 9) adds wages, taxable interest, dividends, IRA and 401(k) withdrawals,
+    pensions, the taxable part of Social Security and capital gains.</li>
+  <li><strong>Adjusted gross income</strong> (AGI, line 11a) is the same in the planner, because it does not model
+    the adjustments on Schedule 1.</li>
+  <li>Subtract the <strong>deductions</strong> (line 14): the standard deduction, the age 65+ add-on and, in 2025-2028,
+    the senior deduction.</li>
+  <li>What remains is <strong>taxable income</strong> (line 15), which is taxed by the brackets.</li>
+</ol>
+<p>Tax-exempt interest (line 2a) and Roth withdrawals are not in total income.</p>
+
+<h2 id="brackets">Brackets: marginal and effective rates</h2>
+<figure>
+  <img src="assets/img/charts/tax-federal-brackets.svg" alt="Step chart of 2026 federal marginal tax rates for single and married filers" width="760" height="420">
+</figure>
+<div class="table-wrap"><table>
+  <thead><tr><th class="num">Rate</th><th class="num">Single, taxable income up to</th><th class="num">Married filing jointly, up to</th></tr></thead>
+  <tbody>
+    <tr><td class="num">10%</td><td class="num">$12,400</td><td class="num">$24,800</td></tr>
+    <tr><td class="num">12%</td><td class="num">$50,400</td><td class="num">$100,800</td></tr>
+    <tr><td class="num">22%</td><td class="num">$105,700</td><td class="num">$211,400</td></tr>
+    <tr><td class="num">24%</td><td class="num">$201,775</td><td class="num">$403,550</td></tr>
+    <tr><td class="num">32%</td><td class="num">$256,225</td><td class="num">$512,450</td></tr>
+    <tr><td class="num">35%</td><td class="num">$640,600</td><td class="num">$768,700</td></tr>
+    <tr><td class="num">37%</td><td class="num">above that</td><td class="num">above that</td></tr>
+  </tbody>
+</table></div>
+<p>Tax brackets are <strong>marginal</strong>: each slice of income is taxed at its own rate, so moving into a higher
+bracket never makes your earlier income cost more.</p>
+<figure>
+  <img src="assets/img/charts/tax-example.svg" alt="Bar split into the standard deduction and the 10%, 12% and 22% brackets for $100,000 of wages" width="760" height="250">
+</figure>
+<p>On $100,000 of wages a single filer has $83,900 of taxable income and pays $13,170. The
+<strong>marginal rate</strong> - the tax on the next dollar - is 22%, but the <strong>effective rate</strong> - tax
+divided by income - is only 13.2%. Decisions about <em>extra</em> income, like a Roth conversion, depend on
+the marginal rate.</p>
+
+<h2 id="deductions">Deductions and age-related tax breaks</h2>
+<figure>
+  <img src="assets/img/charts/tax-deductions-by-age.svg" alt="Stacked bars of 2026 deductions: $16,100 single under 65, $24,150 single 65+, $39,850 married with one 65+, $47,500 married both 65+" width="760" height="360">
+</figure>
+<div class="table-wrap"><table>
+  <thead><tr><th>Deduction (2026)</th><th class="num">Single</th><th class="num">Married jointly</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Standard deduction</td><td class="num">$16,100</td><td class="num">$32,200</td><td>Rises with tax forms inflation.</td></tr>
+    <tr><td>Additional amount, 65 or older</td><td class="num">$2,050</td><td class="num">$1,650 each</td><td>Per person 65 or older at the end of the year. Rises with inflation.</td></tr>
+    <tr><td>Senior deduction</td><td class="num">$6,000</td><td class="num">$6,000 each</td><td>2025 to 2028 only, per person 65 or older; phases out (below). Not inflated.</td></tr>
+  </tbody>
+</table></div>
+
+<h3 id="senior-deduction">The senior deduction phase-out</h3>
+<figure>
+  <img src="assets/img/charts/tax-senior-phaseout.svg" alt="Line chart: the senior deduction falls by 6% of AGI above $75,000 single and $150,000 married" width="760" height="330">
+</figure>
+<p>For 2025 through 2028, each person 65 or older can deduct an extra $6,000. Each $6,000 is reduced by 6% of
+adjusted gross income above $75,000 (single) or $150,000 (married filing jointly), so it is gone at $175,000 single
+and $250,000 married. The planner shows it on line 13b. Large Roth conversions or IRA withdrawals in these years can
+shrink it - another reason to look at the <em>marginal</em> cost of extra income.</p>
+
+<h2 id="capital-gains">Capital gains and qualified dividends</h2>
+<figure>
+  <img src="assets/img/charts/tax-capital-gains.svg" alt="Bar showing $40,000 ordinary income, $9,450 of gains taxed at 0% and $10,550 at 15%" width="760" height="224">
+</figure>
+<p>Long-term capital gains and qualified dividends have their own lower rates - 0%, 15% or 20% - and they are
+<strong>stacked on top</strong> of ordinary income. The 0% rate applies only to the part that fits below
+$49,450 (single) / $98,900 (married) of total taxable income. In the example, $9,450 of the gains are tax free and
+the remaining $10,550 cost $1,583.</p>
+<ul>
+  <li>Gains come from selling investments in taxable accounts: proceeds minus the average cost basis.</li>
+  <li>A net loss reduces income by at most $3,000 a year; the rest is not carried forward in the planner.</li>
+  <li>Because these gains sit on top, a low-income year in early retirement can be a chance to sell at 0%.</li>
+</ul>
+
+<h2 id="social-security-tax">Social Security benefits</h2>
+<p>Up to 85% of Social Security benefits can be taxable, depending on your other income. The planner fills in the
+Social Security benefits worksheet each year; see <a href="social-security.html#taxation">how Social Security is
+taxed</a>.</p>
+
+<h2 id="state-tax">State income tax</h2>
+<p>State tax uses the state brackets in <a href="reference-tables.html#income-brackets">Income Brackets</a> on federal
+taxable income plus tax-exempt interest. The planner starts with a <strong>4% flat placeholder</strong> - replace it
+with your state's brackets, or 0% if your state has no income tax.</p>
+
+<h2 id="medicare">Medicare premiums</h2>
+<p>Medicare premiums are not a tax, but they depend on your income from two years earlier. See
+<a href="medicare-irmaa.html">Medicare and IRMAA</a>.</p>
+
+<h2 id="paying">How taxes are paid</h2>
+<p>Income is paid in full with no withholding. After the year's expenses, the planner works out the federal tax,
+state tax and Medicare premiums and pays them with Auto. A withdrawal from an IRA to pay the tax is itself taxable, so
+the planner recalculates until the bill is fully covered. The <a href="plan-results.html#tax-forms">Annual Tax Forms</a>
+view shows every line for every year.</p>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="asset-classes.html"><span>Previous</span>Asset classes: growth and yield</a>
+      <a class="next" href="social-security.html"><span>Next</span>Social Security</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

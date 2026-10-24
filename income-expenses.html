@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Income and expenses - CashTank Financial Planner</title>
+  <meta name="description" content="Enter wages, pensions and living expenses with start and end years, inflation rates and the accounts they use.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html" class="active" aria-current="page">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>Income and expenses <span class="badge preview">Preview</span></h1>
+<p class="lead">Income is money coming in from work or a pension; expenses are what you spend to live. Enter both as
+yearly amounts in today's dollars. Social Security, RMDs, taxes and Medicare premiums are calculated for you - don't
+enter them here.</p>
+
+<div class="callout preview">
+  <span class="title">Screen in progress</span>
+  The picture is a mockup of the planned screen. The fields, choices and rules below are already used by the planner's
+  calculations.
+</div>
+
+<figure>
+  <img src="assets/img/screens/ui-income-expenses.svg" alt="Mockup of the Income, Expenses page: income categories on the left and an income grid on the right" width="960" height="520">
+  <figcaption>Mockup: the Income tab, with income grouped by category.</figcaption>
+</figure>
+
+<h2 id="income">Income</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Category</td><td>Groups your income (Wages and Pensions to start). Categories are only for organizing; they don't change the calculation.</td></tr>
+    <tr><td>Description</td><td>A name such as "Jordan salary". It appears in the results.</td></tr>
+    <tr><td>Start, End</td><td>The first and last year the income is paid (both included). Pick a calendar year or a <a href="plan-milestones.html">plan milestone</a>. New rows start at <code>SOP</code> (start of plan) and end at <code>YODALL</code> (last life expectancy year).</td></tr>
+    <tr><td>From</td><td>Who earns it. Choose a <strong>tax payer</strong> for wages, or a tax payer's <strong>Pension</strong> for a pension.</td></tr>
+    <tr><td>To</td><td>The account the money is paid into. It must hold at least one investment; the money is split between its investments by their <a href="investments.html#investments">Mix</a>.</td></tr>
+    <tr><td>Amount</td><td>Yearly amount in today's dollars, before taxes.</td></tr>
+    <tr><td>Inflation rate</td><td>How much the amount grows each year. It defaults to the plan's general inflation rate. Use 0% for a pension without cost-of-living raises.</td></tr>
+  </tbody>
+</table></div>
+
+<h3 id="wages-vs-pensions">Wages and pensions follow the retirement age</h3>
+<ul>
+  <li><strong>Wages</strong> are paid only in the years <em>before</em> the tax payer's retirement year, and only
+    between Start and End. They are reported on Form 1040 line 1a.</li>
+  <li><strong>Pensions</strong> are paid from the retirement year on, between Start and End. They are reported on
+    line 5a and taxed as ordinary income.</li>
+  <li>Both stop after the tax payer's life expectancy year.</li>
+</ul>
+<p>Because wages already stop at retirement, a salary can simply run from <code>SOP</code> to <code>YORTP1</code>.
+When the optimizer tries a later retirement age, the salary automatically runs longer.</p>
+
+<div class="callout note">
+  <span class="title">No tax withholding</span>
+  Income is paid in full. The planner works out each year's federal and state tax at the end of the year and pays it
+  from your accounts with Auto.
+</div>
+
+<h2 id="expenses">Expenses</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Category</td><td>Groups your expenses (Essential and Discretionary to start).</td></tr>
+    <tr><td>Description</td><td>A name such as "Groceries" or "Travel".</td></tr>
+    <tr><td>Start, End</td><td>The first and last year of the expense (both included); a calendar year or a milestone.</td></tr>
+    <tr><td>From</td><td><strong>Auto</strong> (recommended) or a specific account. If that account runs short, Auto pays the rest.</td></tr>
+    <tr><td>To</td><td>Always <em>Living Expenses</em>.</td></tr>
+    <tr><td>Amount</td><td>Yearly amount in today's dollars.</td></tr>
+    <tr><td>Inflation rate</td><td>Defaults to the general inflation rate. Healthcare often inflates faster.</td></tr>
+  </tbody>
+</table></div>
+<p>Paying an expense is a withdrawal. Selling from a brokerage account can create a capital gain, and taking money from
+an IRA or 401(k) is taxable income. The planner adds these to the year's taxes. See
+<a href="withdrawals.html">withdrawals and Auto</a>.</p>
+
+<h2 id="dates">Choosing start and end years</h2>
+<figure class="screenshot">
+  <img src="assets/img/screens/dialog-from-to-year.png" alt="The start and end year picker: plan milestones on top, calendar years with ages and events below" width="860" height="680">
+  <figcaption>The start / end year picker. Milestones (top) move with the scenario; calendar years (bottom) are fixed.</figcaption>
+</figure>
+<p>Click the button in a Start or End cell to open the picker. The top list has the plan milestones with the year each
+falls in and each tax payer's age; the bottom list has every plan year with the ages and what happens that year
+(retirement, Social Security, RMDs, life expectancy). Read more in <a href="plan-milestones.html">plan milestones</a>.</p>
+
+<h2 id="checks">Checks before a run</h2>
+<p>When you run the plan, it stops with a message if:</p>
+<ul>
+  <li>an income's <em>From</em> is not a current tax payer or pension;</li>
+  <li>an income's <em>To</em> is not an account with at least one investment;</li>
+  <li>an expense's <em>From</em> is neither Auto nor an existing account;</li>
+  <li>a Start or End is not a valid year or milestone.</li>
+</ul>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="tax-payers.html"><span>Previous</span>Tax Payers</a>
+      <a class="next" href="investments.html"><span>Next</span>Investments</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

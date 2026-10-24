@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CashTank Financial Planner - User Manual</title>
+  <meta name="description" content="User manual for the CashTank Financial Planner - plan retirement income, taxes, Social Security, RMDs, Medicare IRMAA and Roth conversions year by year.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html" class="active" aria-current="page">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>CashTank Financial Planner</h1>
+<p class="lead">The financial planner in CashTank Budget projects your finances year by year, from today to the end of
+your life expectancy. It shows whether your money lasts and how much tax you pay along the way. It can also try
+hundreds of retirement, Social Security and Roth conversion choices to find the plan that holds up best.</p>
+
+<figure class="screenshot">
+  <img src="assets/img/screens/screen-tax-payers.png" alt="The financial planner with the Tax Payers page open: navigation on the left, tax payer details on the right" width="1380" height="820">
+  <figcaption>The planner window. Choose a page on the left; edit it on the right.</figcaption>
+</figure>
+
+<h2 id="what-it-does">What the planner does</h2>
+<ul>
+  <li><strong>Simulates every year</strong> of your plan: investment growth and yield, wages, pensions, Social Security,
+    required minimum distributions, Roth conversions, living expenses, income taxes and Medicare premiums.</li>
+  <li><strong>Fills in your tax forms</strong> for every year (Form 1040 and the Social Security benefits worksheet),
+    so you can see where each dollar of tax comes from.</li>
+  <li><strong>Tests a bad market.</strong> Besides a "normal" market built from long-run averages, it replays real
+    2000-2026 market history starting at the worst point for your mix of investments.</li>
+  <li><strong>Optimizes.</strong> It runs every combination of your retirement ages, Social Security claim ages,
+    Roth conversion buckets and both market scenarios, and picks the one that lasts longest.</li>
+</ul>
+
+<h2 id="find-your-way">Find your way around this manual</h2>
+<div class="cards">
+  <a class="card" href="getting-started.html"><strong>Getting started</strong><span>Build your first plan in nine steps.</span></a>
+  <a class="card" href="tax-payers.html"><strong>Screens</strong><span>Every page of the planner, field by field.</span></a>
+  <a class="card" href="how-the-plan-works.html"><strong>How the plan works</strong><span>What happens each year, and the assumptions.</span></a>
+  <a class="card" href="asset-classes.html"><strong>Asset classes</strong><span>Growth, yield, real market history and the down market.</span></a>
+  <a class="card" href="taxes.html"><strong>Taxes and deductions</strong><span>Brackets, age 65+ breaks, capital gains, Social Security tax.</span></a>
+  <a class="card" href="rmds.html"><strong>RMDs</strong><span>When required distributions start and how big they get.</span></a>
+  <a class="card" href="medicare-irmaa.html"><strong>Medicare and IRMAA</strong><span>Why income two years ago sets your premium.</span></a>
+  <a class="card" href="roth-conversions.html"><strong>Roth conversions</strong><span>Filling a tax bracket on purpose.</span></a>
+  <a class="card" href="glossary.html"><strong>Glossary</strong><span>Plain-English definitions of every term.</span></a>
+</div>
+
+<h2 id="status">Screens built and in progress</h2>
+<p>The planner is still being built. Each screen chapter is marked:</p>
+<ul>
+  <li><span class="badge built">Built</span> - the screen works as described and the pictures are real screenshots.</li>
+  <li><span class="badge preview">Preview</span> - the calculations behind the screen are finished, but the screen
+    itself is still being designed. The pictures are mockups and details may change.</li>
+</ul>
+
+<div class="callout warn">
+  <span class="title">An educational tool, not advice</span>
+  The planner uses 2026 tax rules and simplifies some of them (see
+  <a href="how-the-plan-works.html#assumptions">assumptions and simplifications</a>). Real markets will not repeat
+  history exactly. Use the results to compare choices and ask better questions, and check important decisions with a tax or
+  financial professional.
+</div>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <span></span>
+      <a class="next" href="getting-started.html"><span>Next</span>Getting started</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

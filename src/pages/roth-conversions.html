@@ -1,0 +1,65 @@
+<!--
+title: Roth conversions
+description: How Roth buckets work, how much the planner converts each year, when conversions stop, and the trade-offs.
+-->
+<h1>Roth conversions</h1>
+<p class="lead">A Roth conversion moves money from a traditional IRA or 401(k) into a Roth account. You pay income tax
+on the amount now; after that it grows tax free, is withdrawn tax free and has no RMDs. Converting in low-income years
+can lower your lifetime taxes.</p>
+
+<h2 id="why">Why convert?</h2>
+<ul>
+  <li><strong>Fill low brackets.</strong> Between retirement and Social Security or RMDs, your income may be unusually
+    low. Converting fills the 10%, 12% or 22% brackets that would otherwise go unused.</li>
+  <li><strong>Smaller RMDs later.</strong> A smaller IRA means smaller <a href="rmds.html">required distributions</a>
+    in your 70s and 80s, which could otherwise push you into higher brackets.</li>
+  <li><strong>Less tax on Social Security and lower Medicare premiums later</strong>, because Roth withdrawals are not
+    income.</li>
+  <li><strong>For a surviving spouse,</strong> who files single with narrower brackets, and for heirs.</li>
+</ul>
+<p>The cost is paying tax now - and the money used to pay it no longer grows for you. Whether conversions pay off
+depends on your tax rates now versus later, which is exactly what the <a href="optimizer.html">optimizer</a> tests.</p>
+
+<h2 id="buckets">Roth buckets</h2>
+<figure>
+  <img src="assets/img/charts/roth-buckets.svg" alt="Bars showing how much a single person with no other income converts to fill the 10%, 12% and 22% brackets" width="760" height="300">
+</figure>
+<p>A <strong>Roth bucket</strong> is a tax bracket to fill. Each year, the planner converts just enough to bring
+taxable income up to the top of that bracket. The planner starts with three buckets - the 10%, 12% and 22% brackets -
+for your filing status. For a single person with no other income in 2026:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Bucket</th><th class="num">Fill taxable income to</th><th class="num">Convert</th><th class="num">Federal tax</th></tr></thead>
+  <tbody>
+    <tr><td>10%</td><td class="num">$12,400</td><td class="num">{{roth10Convert}}</td><td class="num">{{roth10Tax}}</td></tr>
+    <tr><td>12%</td><td class="num">$50,400</td><td class="num">{{roth12Convert}}</td><td class="num">{{roth12Tax}}</td></tr>
+    <tr><td>22%</td><td class="num">$105,700</td><td class="num">{{roth22Convert}}</td><td class="num">{{roth22Tax}}</td></tr>
+  </tbody>
+</table></div>
+<p>The conversion is larger than the bracket because the standard deduction ($16,100) comes first. Any other income -
+wages, a pension, taxable Social Security, dividends, RMDs - uses up part of the bucket, so less is converted. State
+tax is extra.</p>
+
+<h2 id="rules">How the planner converts</h2>
+<ul>
+  <li>Conversions happen <strong>every year until the owner's RMDs start</strong> (72, 73 or 75 depending on year of
+    birth), and only while the owner is alive.</li>
+  <li>The money comes from the owner's IRA and 401(k) accounts, in proportion to their balances, and goes into the
+    owner's Roth account. If the owner has no Roth, any Roth account in the plan is used. The plan needs a Roth account
+    with at least one investment for conversions to happen.</li>
+  <li>The bucket's limit rises every year with the tax forms inflation rate, and follows the filing status (married
+    limits while both are alive, single after).</li>
+  <li>Conversions are reported on Form 1040 line 4a (from an IRA) or 5a (from a 401(k)) and shown as
+    <em>Roth Conversion</em> in the cash flows.</li>
+  <li>The tax on the conversion is paid by Auto with the rest of the year's taxes - from savings first, which is
+    usually what you want.</li>
+</ul>
+<p><strong>Run Plan</strong> does no conversions. The <a href="optimizer.html">optimizer</a> tries no conversions and
+each bucket in turn.</p>
+
+<div class="callout warn">
+  <span class="title">Watch the side effects</span>
+  A conversion raises your AGI, which can reduce the <a href="taxes.html#senior-deduction">senior deduction</a>, make
+  more <a href="social-security.html#taxation">Social Security taxable</a>, and - two years later - raise your
+  <a href="medicare-irmaa.html">Medicare premiums</a>. Look at the tax forms for conversion years, especially boxes 13b
+  and 11a.1.
+</div>

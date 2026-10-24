@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How the plan works - CashTank Financial Planner</title>
+  <meta name="description" content="The yearly simulation step by step, inflation, the plan horizon, when a plan ends, and the assumptions and simplifications.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html" class="active" aria-current="page">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>How the plan works</h1>
+<p class="lead">The planner is a year-by-year simulation. It starts with today's balances and steps forward one
+calendar year at a time, applying the same steps every year, until the last tax payer's life expectancy year.</p>
+
+<h2 id="money-flow">How money moves</h2>
+<figure>
+  <img src="assets/img/charts/money-flow.svg" alt="Diagram: wages, pensions, Social Security and RMDs flow into accounts; living expenses, federal tax, state tax and Medicare are paid out of accounts" width="760" height="370">
+</figure>
+
+<h2 id="yearly-steps">Each year, step by step</h2>
+<figure>
+  <img src="assets/img/charts/yearly-steps.svg" alt="Diagram of the seven yearly steps: market, income, Social Security, RMDs, Roth conversions, expenses, taxes and Medicare, then record the year" width="760" height="300">
+</figure>
+<ol>
+  <li><strong>Market.</strong> Every investment grows by its growth rate and earns its yield on the balance at the start
+    of the year. Yield is reinvested; in taxable accounts it is taxed that year as interest, dividends or tax-exempt
+    interest. See <a href="asset-classes.html">asset classes</a>.</li>
+  <li><strong>Income.</strong> Wages are paid until the retirement year and pensions from it, each between its start
+    and end years, into the chosen account. See <a href="income-expenses.html">income and expenses</a>.</li>
+  <li><strong>Social Security.</strong> From the claim age, each tax payer's benefit is paid into the cash account.
+    See <a href="social-security.html">Social Security</a>.</li>
+  <li><strong>RMDs.</strong> From the RMD start age, the required minimum is taken from each IRA and 401(k) and paid
+    into the cash account. See <a href="rmds.html">RMDs</a>.</li>
+  <li><strong>Roth conversions.</strong> If the scenario fills a Roth bucket, IRA / 401(k) money is moved to a Roth
+    until taxable income reaches the bucket's limit. See <a href="roth-conversions.html">Roth conversions</a>.</li>
+  <li><strong>Expenses.</strong> Each living expense is paid from its account or by Auto. See
+    <a href="withdrawals.html">withdrawals and Auto</a>.</li>
+  <li><strong>Taxes and Medicare.</strong> The year's federal and state income tax and Medicare premiums are worked
+    out and paid by Auto. Because paying them can create more taxable income (for example an IRA withdrawal), the
+    planner recalculates until the bill is fully paid. See <a href="taxes.html">taxes</a> and
+    <a href="medicare-irmaa.html">Medicare</a>.</li>
+</ol>
+<p>The planner then records the year: account balances, cash flows, income and expenses, net asset value and the tax
+forms.</p>
+
+<h2 id="inflation">Inflation and today's dollars</h2>
+<figure>
+  <img src="assets/img/charts/inflation-example.svg" alt="Line chart: $60,000 grows to $141,394 by year 30 at 3% inflation" width="760" height="300">
+</figure>
+<p>All amounts are entered in today's dollars. Plan year 1 uses them as entered; each later year multiplies them by
+(1 + inflation rate) for every year since plan year 1. Four rates are used:</p>
+<ul>
+  <li>each income and expense's own <strong>inflation rate</strong> (default: the general rate);</li>
+  <li>the <strong>general inflation rate</strong> for Social Security cost-of-living increases;</li>
+  <li>the <strong>tax forms inflation rate</strong> for tax brackets, deductions, Roth buckets and IRMAA thresholds;</li>
+  <li>the <strong>Medicare premium inflation rate</strong> for Medicare premiums.</li>
+</ul>
+<p>Results are shown in the dollars of each year (nominal dollars). To compare a far-future amount with today, divide
+by the growth from inflation; at 3% a dollar in year 30 buys about what 42 cents buys today.</p>
+
+<h2 id="horizon">The plan horizon and how a plan ends</h2>
+<ul>
+  <li><strong>Plan year 1</strong> is the current calendar year (the start of plan, <code>SOP</code>).</li>
+  <li>The plan runs through the <strong>last life expectancy year</strong> of the tax payers (<code>YODALL</code>).</li>
+  <li>A tax payer's wages, pension and own Social Security stop after their life expectancy year. The survivor keeps
+    the larger Social Security benefit and files single from the next year.</li>
+  <li>If Auto cannot pay a bill because every account it can use is empty, the plan <strong>ends that year</strong>.
+    The results show where it stopped: that is the year the money ran out.</li>
+</ul>
+
+<h2 id="markets">Two market scenarios</h2>
+<p>Every plan can be run in a <strong>normal market</strong> (each investment earns its own growth and yield, or its
+asset class's long-run average) or a <strong>down and flat market</strong> (every investment replays its asset class's
+real 2000-2026 history, starting at the worst point for your holdings). <strong>Run Plan</strong> uses the normal
+market; the optimizer runs both. See <a href="asset-classes.html#down-market">normal and down markets</a>.</p>
+
+<h2 id="assumptions">Assumptions and simplifications</h2>
+<p>The planner keeps the model understandable. Know these limits when you read the results:</p>
+<ul>
+  <li><strong>Timing.</strong> Each year is calculated as one step. Growth and yield apply to the balance at the start
+    of the year, so money deposited during a year starts growing the next year.</li>
+  <li><strong>Deductions.</strong> The standard deduction (with the 65+ add-on and the 2025-2028 senior deduction)
+    is always used; itemized deductions and credits are not modeled.</li>
+  <li><strong>Capital gains.</strong> Sales use average cost, and every gain is treated as long-term. A net capital
+    loss is limited to $3,000 a year, with no carryforward. Gold is taxed like other capital gains (real gold funds
+    can be taxed at up to 28%).</li>
+  <li><strong>Penalties.</strong> There are no early-withdrawal penalties for IRA or 401(k) money taken before 59&frac12;.</li>
+  <li><strong>State tax.</strong> State tax uses the state brackets on federal taxable income plus tax-exempt
+    interest; state-specific rules (such as exempting Social Security or pensions) are not modeled.</li>
+  <li><strong>Social Security.</strong> A survivor receives the deceased's benefit only if the deceased had already
+    claimed it; survivor reductions are not applied. Benefits for a living spouse based on the other's record (spousal
+    benefits) are not modeled - enter the higher of the two in each person's own estimate if that applies to you.</li>
+  <li><strong>Roth conversions</strong> fill the bucket before the year's expenses and taxes are paid, so later
+    withdrawals can push taxable income above the bucket's limit.</li>
+  <li><strong>No rebalancing.</strong> Each investment grows on its own; new money is split by Mix and withdrawals are
+    proportional to balance.</li>
+</ul>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="reference-tables.html"><span>Previous</span>Reference tables and settings</a>
+      <a class="next" href="asset-classes.html"><span>Next</span>Asset classes: growth and yield</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

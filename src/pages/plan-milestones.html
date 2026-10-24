@@ -1,0 +1,66 @@
+<!--
+title: Plan milestones (year codes)
+description: Start and end years for income and expenses can be plan milestones such as retirement or Social Security claims that move with each optimizer scenario.
+-->
+<h1>Plan milestones (year codes)</h1>
+<p class="lead">An income or expense often starts or stops at an event - when you retire, when you claim Social
+Security, at the end of life. Instead of typing a year, choose a <strong>milestone</strong>. Milestones move
+automatically when you change an age, and in every optimizer scenario.</p>
+
+<h2 id="codes">The milestones</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Code</th><th>Meaning</th><th>Year</th></tr></thead>
+  <tbody>
+    <tr><td><code>SOP</code></td><td>Start of plan</td><td>The current year (plan year 1)</td></tr>
+    <tr><td><code>YORTP1</code></td><td>Year of retirement, tax payer 1</td><td>Year of birth + retirement age</td></tr>
+    <tr><td><code>YORTP2</code></td><td>Year of retirement, tax payer 2</td><td>Year of birth + retirement age</td></tr>
+    <tr><td><code>YORALL</code></td><td>Both retired</td><td>The later of the two retirements</td></tr>
+    <tr><td><code>SSCTP1</code></td><td>Social Security claim, tax payer 1</td><td>Year of birth + claim age</td></tr>
+    <tr><td><code>SSCTP2</code></td><td>Social Security claim, tax payer 2</td><td>Year of birth + claim age</td></tr>
+    <tr><td><code>SSCALL</code></td><td>Both claiming</td><td>The later of the two claims</td></tr>
+    <tr><td><code>YODTP1</code></td><td>Life expectancy year, tax payer 1</td><td>Year of birth + life expectancy</td></tr>
+    <tr><td><code>YODTP2</code></td><td>Life expectancy year, tax payer 2</td><td>Year of birth + life expectancy</td></tr>
+    <tr><td><code>YODALL</code></td><td>Last life expectancy year (end of plan)</td><td>The later of the two</td></tr>
+  </tbody>
+</table></div>
+<p>"ALL" always means the <strong>later</strong> of the two tax payers. With one tax payer, the TP2 and ALL codes
+mean the same as the TP1 codes, and the picker only offers <code>SOP</code>, <code>YORTP1</code>,
+<code>SSCTP1</code> and <code>YODTP1</code>.</p>
+
+<figure>
+  <img src="assets/img/charts/year-codes-timeline.svg" alt="Timeline of milestones for two tax payers: retirements, Social Security claims, RMD starts and life expectancy years" width="760" height="286">
+</figure>
+
+<h2 id="picker">The start and end year picker</h2>
+<figure class="screenshot">
+  <img src="assets/img/screens/dialog-from-to-year.png" alt="The start and end year picker with milestones on top and calendar years with ages and events below" width="860" height="680">
+</figure>
+<ul>
+  <li><strong>Plan milestones</strong> (top) - each code with the year it falls in today, each tax payer's age that
+    year and what it means.</li>
+  <li><strong>Calendar years</strong> (bottom) - every year of the plan with both ages and what happens that year:
+    retirements, Social Security claims, the start of RMDs and life expectancy years (in bold).</li>
+  <li>Select one entry and click <strong>OK</strong> (or double-click it). Choosing in one list clears the other.</li>
+</ul>
+<p>The grid shows a milestone with its current year, for example <code>YORTP1 (2026)</code>; a calendar year shows
+just the year.</p>
+
+<h2 id="moving">Milestones move, calendar years don't</h2>
+<p>The years shown use each tax payer's <em>first</em> retirement age and claim age - the ones Run Plan uses. When the
+optimizer tries retirement age 65 instead of 62, every <code>YORTP1</code> in your income and expenses moves three
+years later for that scenario. A calendar year such as 2030 stays put.</p>
+<div class="callout tip">
+  <span class="title">Which to use</span>
+  Use a milestone when the date really depends on the event: a salary that ends at retirement, a bridge expense until
+  Social Security starts, travel in the first years of retirement. Use a calendar year for fixed dates such as a
+  mortgage payoff or a child's college years.
+</div>
+
+<h2 id="details">Details</h2>
+<ul>
+  <li>Start and end years are both <strong>included</strong>: an expense from <code>YORTP1</code> to
+    <code>YORTP1</code> happens in the retirement year only.</li>
+  <li>New income and expenses start at <code>SOP</code> and end at <code>YODALL</code>.</li>
+  <li>Wages always stop at retirement and pensions always start at it, whatever the end and start years say.</li>
+  <li>If tax payer 2 is deleted, dates using their milestones switch to the matching tax payer 1 milestone.</li>
+</ul>

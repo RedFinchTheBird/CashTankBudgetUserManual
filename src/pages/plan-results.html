@@ -1,0 +1,77 @@
+<!--
+title: Plan results
+description: Read the yearly cash flows, account balances, income and expenses, net asset value, tax forms and optimizer results.
+-->
+<h1>Plan results <span class="badge preview">Preview</span></h1>
+<p class="lead">After <strong>Run Plan</strong>, Plan Results shows every year of the projection from several angles.
+Choose a view on the left.</p>
+
+<figure class="screenshot">
+  <img src="assets/img/screens/screen-plan-results-shell.png" alt="The Plan Results page with its list of result views" width="1380" height="820">
+  <figcaption>The Plan Results page and its seven views. The grids and graphs inside are in progress.</figcaption>
+</figure>
+
+<figure>
+  <img src="assets/img/screens/ui-plan-results.svg" alt="Mockup of the Annual Cash Flows grid with year, ages, description, from, to, amount and 1040 box" width="960" height="470">
+  <figcaption>Mockup: Annual Cash Flows. Each row is one movement of money.</figcaption>
+</figure>
+
+<h2 id="cash-flows">Annual Cash Flows</h2>
+<p>Every movement of money in every year: wages and pensions into accounts, Social Security and RMDs into the cash
+account, Roth conversions, and each withdrawal that paid an expense, a tax or Medicare.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Year, ages</td><td>The calendar year and each tax payer's age.</td></tr>
+    <tr><td>Description</td><td>The income or expense name, or Social Security, Required Minimum Distribution, Roth Conversion, Federal Income Tax, State Income Tax, Medicare Premiums.</td></tr>
+    <tr><td>From, To</td><td>Where the money came from and went: a tax payer, a pension, an account, Auto, Living Expenses, a tax or Medicare. Renaming an account or tax payer renames it here too.</td></tr>
+    <tr><td>Amount</td><td>The amount in that year's dollars.</td></tr>
+    <tr><td>1040 box</td><td>Where the flow appears on Form 1040 (1a wages, 4a IRA, 5a pensions and 401(k), 6a Social Security).</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="account-balances">Annual Account Balances</h2>
+<p>One row per account per year: <strong>starting balance</strong>, money <strong>in</strong> (deposits),
+money <strong>out</strong> (withdrawals) and <strong>ending balance</strong>. Ending minus starting, minus in, plus
+out is that year's market growth and yield.</p>
+
+<h2 id="income-expense-table">Annual Income, Expense Table</h2>
+<p>Each income and expense item per year, including Social Security, federal and state income tax and Medicare
+premiums. RMDs and Roth conversions are not listed here, because they move your own money between accounts rather than
+add or spend it.</p>
+
+<h2 id="income-expense-graph">Annual Income, Expense Graph</h2>
+<p>Total income (wages, pensions and Social Security) against total expenses (living expenses, taxes and Medicare)
+for each year. Years where expenses are above income are paid from savings.</p>
+
+<h2 id="nav-graph">Annual Net Asset Value Graph</h2>
+<p>Net asset value (NAV) is the total of all your accounts at the end of each year. A NAV that falls toward zero before
+the end of the plan is a warning sign; if it reaches the point where a bill cannot be paid, the plan ends that year.</p>
+
+<h2 id="tax-forms">Annual Tax Forms</h2>
+<p>For every year, the Form 1040 lines and the Social Security benefits worksheet, as the planner filled them in.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Box</th><th>Meaning</th><th>Box</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>1a, 1z</td><td>Wages</td><td>9</td><td>Total income</td></tr>
+    <tr><td>2a</td><td>Tax-exempt interest</td><td>11a</td><td>Adjusted gross income (AGI)</td></tr>
+    <tr><td>2b</td><td>Taxable interest</td><td>12e</td><td>Standard deduction (with age 65+ add-on)</td></tr>
+    <tr><td>3a, 3b</td><td>Qualified / total dividends</td><td>13b</td><td>Senior deduction (2025-2028)</td></tr>
+    <tr><td>4a, 4b</td><td>IRA distributions (RMDs, conversions, withdrawals)</td><td>14</td><td>Total deductions</td></tr>
+    <tr><td>5a, 5b</td><td>Pensions and 401(k) distributions</td><td>15</td><td>Taxable income</td></tr>
+    <tr><td>6a, 6b</td><td>Social Security / taxable part</td><td>16, 24</td><td>Federal tax</td></tr>
+    <tr><td>7a</td><td>Capital gain or loss (net loss limited to -$3,000)</td><td></td><td></td></tr>
+  </tbody>
+</table></div>
+<p>Three extra boxes are <strong>not on the real form</strong>. They are shown for clarity and highlighted in yellow:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Box</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr class="highlight"><td>7a.1</td><td>Capital gain proceeds - what the sales brought in (Schedule D, 8a column d)</td></tr>
+    <tr class="highlight"><td>7a.2</td><td>Capital gain cost basis - what those investments cost (Schedule D, 8a column e)</td></tr>
+    <tr class="highlight"><td>11a.1</td><td>MAGI for Medicare IRMAA: line 11a + line 2a. See <a href="medicare-irmaa.html#magi">MAGI</a>.</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="optimizer">Optimizer</h2>
+<p>One row per optimizer scenario. See <a href="optimizer.html#results">reading the optimizer results</a>.</p>

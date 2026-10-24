@@ -1,0 +1,81 @@
+<!--
+title: Getting started
+description: Build your first financial plan in nine steps - tax payers, accounts, income, expenses, settings, then run the plan and the optimizer.
+-->
+<h1>Getting started</h1>
+<p class="lead">Open the planner from the <strong>Financial Plan</strong> tab of CashTank Budget. Every CashTank project
+has its own plan, saved with the project.</p>
+
+<h2 id="the-window">The planner window</h2>
+<figure class="screenshot">
+  <img src="assets/img/screens/screen-tax-payers.png" alt="The planner window with the Plan Settings, Other Settings and Actions areas on the left" width="1380" height="820">
+  <figcaption>The planner window. The left side selects a page; the right side shows it.</figcaption>
+</figure>
+<ul>
+  <li><strong>Plan Settings</strong> - the pages you fill in for your plan: Tax Payers, Income and Expenses,
+    Investments, Optimizer and Plan Results.</li>
+  <li><strong>Other Settings</strong> - reference tables that come filled in with 2026 values: Income Brackets,
+    Medicare Brackets, RMD Table, Asset Classes and General Settings. You rarely need to change them.</li>
+  <li><strong>Actions</strong> - <strong>Run Plan</strong> calculates the plan and fills in Plan Results.</li>
+</ul>
+
+<h2 id="first-plan">Build your first plan</h2>
+<ol class="steps">
+  <li><strong>Describe the tax payers.</strong> On <a href="tax-payers.html">Tax Payers</a>, enter a name, year of
+    birth and life expectancy for yourself, and add a spouse or partner if you file jointly. Enter up to three
+    retirement ages and three Social Security claim ages you want to compare.</li>
+  <li><strong>Enter Social Security estimates.</strong> Copy your monthly benefit at 62, at full retirement age and at
+    70 from your Social Security statement (<em>my Social Security</em> at ssa.gov).</li>
+  <li><strong>Add your accounts and investments.</strong> On <a href="investments.html">Investments</a>, add each
+    bank or brokerage, its accounts (Savings, Brokerage, IRA, 401(k), Roth...) and the investments in each account
+    with today's balance. Give every investment an <a href="asset-classes.html">asset class</a>.</li>
+  <li><strong>Add your income.</strong> On <a href="income-expenses.html">Income and Expenses</a>, add wages and
+    pensions and the account each one is paid into. Social Security and RMDs are added for you.</li>
+  <li><strong>Add your expenses.</strong> Add your yearly living expenses in today's dollars. Leave
+    <em>From</em> as <strong>Auto</strong> to let the planner pay them from your accounts in a sensible
+    <a href="withdrawals.html">order</a>. Taxes and Medicare are added for you.</li>
+  <li><strong>Check the settings.</strong> On <a href="reference-tables.html#general-settings">General Settings</a>,
+    review inflation and the Social Security adjustment factor. Replace the placeholder state tax in
+    <a href="reference-tables.html#income-brackets">Income Brackets</a> with your state's rates.</li>
+  <li><strong>Run the plan.</strong> Click <strong>Run Plan</strong>. It uses each tax payer's first retirement age
+    and first claim age, no Roth conversions and a normal market.</li>
+  <li><strong>Read the results.</strong> <a href="plan-results.html">Plan Results</a> shows every year's cash flows,
+    account balances, income and expenses, net asset value and tax forms.</li>
+  <li><strong>Optimize.</strong> On <a href="optimizer.html">Optimizer</a>, run every combination of your ages and
+    Roth buckets in both markets and compare the scenarios.</li>
+</ol>
+
+<div class="callout tip">
+  <span class="title">Start simple</span>
+  A first plan needs only the tax payers, one Savings account with one investment, and your living expenses. Run it,
+  look at the results, then add detail.
+</div>
+
+<h2 id="saving">Saving your plan</h2>
+<p>The plan is part of your CashTank project. Any change - typing in a box, picking a value, adding or deleting a row
+- turns on the main window's <strong>Save</strong> button. Save the project as usual; if you close CashTank with
+unsaved changes, it asks whether to save them.</p>
+<ul>
+  <li><strong>File &gt; New</strong> starts a new plan with one tax payer and the 2026 reference tables.</li>
+  <li><strong>Opening a project</strong> loads its plan. Older projects without a plan start with a new one.</li>
+  <li>Plan results are saved too, so you can reopen a project and read them without running the plan again.</li>
+</ul>
+
+<h2 id="dollars">Amounts are in today's dollars</h2>
+<p>Enter every amount (wages, pensions, expenses, Social Security estimates) as it is <strong>today</strong>. The
+planner raises each amount every year by its inflation rate. Results show the actual dollars of each year, so a
+$60,000 expense grows to about {{inflation30}} in plan year 30 at 3% inflation. See
+<a href="how-the-plan-works.html#inflation">inflation</a>.</p>
+
+<h2 id="pickers">Picking ages and years</h2>
+<p>Boxes for ages and years are filled in with a picker: click the button at the right of the box.</p>
+<figure class="screenshot" style="max-width:360px">
+  <img src="assets/img/screens/dialog-age.png" alt="The age picker: a list of ages with OK and Cancel buttons" width="340" height="520">
+  <figcaption>The age picker. Type digits to jump (6 then 5 selects 65); Enter or a double-click accepts.</figcaption>
+</figure>
+<ul>
+  <li><strong>Age picker</strong> - ages 20 to 100, for life expectancy, retirement ages and Social Security ages.</li>
+  <li><strong>Year picker</strong> - years 1900 to 2100, for the year of birth.</li>
+  <li><strong>Start / end year picker</strong> - for income and expenses: a plan milestone such as "retirement" or a
+    calendar year. See <a href="plan-milestones.html">plan milestones</a>.</li>
+</ul>

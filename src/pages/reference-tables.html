@@ -1,0 +1,68 @@
+<!--
+title: Reference tables and settings
+description: Income brackets, Medicare brackets, the RMD table, asset classes and general plan settings.
+-->
+<h1>Reference tables and settings <span class="badge preview">Preview</span></h1>
+<p class="lead">The pages under <strong>Other Settings</strong> hold the tax tables and market data the planner uses.
+They come filled in with 2026 values, and the planner raises the dollar amounts each year with inflation. Most people
+only need to change the state tax brackets and the general settings.</p>
+
+<div class="callout preview">
+  <span class="title">Screens in progress</span>
+  The pictures are mockups. The tables and their 2026 values are already used by the calculations.
+</div>
+
+<h2 id="income-brackets">Income Brackets</h2>
+<figure>
+  <img src="assets/img/screens/ui-income-brackets.svg" alt="Mockup of the Income Brackets table" width="960" height="440">
+</figure>
+<p>Three kinds of brackets, each for <em>single</em> and <em>married filing jointly</em>:</p>
+<ul>
+  <li><strong>Federal</strong> - the seven 2026 ordinary income brackets (10% to 37%).</li>
+  <li><strong>State</strong> - a <strong>4% flat placeholder</strong>. Replace it with your state's brackets, or set
+    the rate to 0% if your state has no income tax. State tax is applied to federal taxable income plus tax-exempt
+    interest.</li>
+  <li><strong>Capital Gain</strong> - the 0%, 15% and 20% brackets for long-term gains and qualified dividends.</li>
+</ul>
+<p>See <a href="taxes.html">income taxes and deductions</a> for how they are used.</p>
+
+<h2 id="medicare-brackets">Medicare Brackets</h2>
+<figure>
+  <img src="assets/img/screens/ui-medicare-brackets.svg" alt="Mockup of the Medicare Brackets table" width="960" height="440">
+</figure>
+<p>The 2026 IRMAA tiers: for each filing status, a modified AGI range and the monthly premium per person (Part B plus
+any Part D surcharge). See <a href="medicare-irmaa.html">Medicare and IRMAA</a>.</p>
+
+<h2 id="rmd-table">RMD Table</h2>
+<figure>
+  <img src="assets/img/screens/ui-rmd-table.svg" alt="Mockup of the RMD table with age, divisor and percent of balance" width="960" height="440">
+</figure>
+<p>The IRS Uniform Lifetime Table for ages 72 to 120: the divisor for each age and the share of the balance it
+works out to. See <a href="rmds.html">required minimum distributions</a>.</p>
+
+<h2 id="asset-classes">Asset Classes</h2>
+<figure>
+  <img src="assets/img/screens/ui-asset-classes.svg" alt="Mockup of the Asset Classes page with the classes and the performance history of one class" width="960" height="470">
+</figure>
+<p>Each asset class has the Form 1040 boxes its growth and yield are reported in, and a yearly performance history.
+The six starting classes are loaded with real 2000-2026 history. See <a href="asset-classes.html">asset classes</a>.</p>
+<ul>
+  <li>You can add your own classes. Every class's history must start in the same calendar year (history year 1), so
+    that all classes rise and fall together in the down market.</li>
+  <li>An asset class still used by an investment cannot be deleted.</li>
+</ul>
+
+<h2 id="general-settings">General Settings</h2>
+<figure>
+  <img src="assets/img/screens/ui-general-settings.svg" alt="Mockup of General Settings: plan name, Social Security adjustment factor and three inflation rates" width="960" height="400">
+</figure>
+<div class="table-wrap"><table>
+  <thead><tr><th>Setting</th><th class="num">Default</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Plan name</td><td class="num">New Financial Plan</td><td>For your reference.</td></tr>
+    <tr><td>Social Security adjustment factor</td><td class="num">85%</td><td>The share of your Social Security benefit you expect to be paid. 85% plans for a 15% benefit cut; use 100% for no cut.</td></tr>
+    <tr><td>General inflation rate</td><td class="num">3%</td><td>Default inflation for income and expenses, and the yearly Social Security cost-of-living increase.</td></tr>
+    <tr><td>Tax forms inflation rate</td><td class="num">3%</td><td>How fast tax brackets, the standard deduction, the 65+ add-on, Roth buckets and IRMAA thresholds rise.</td></tr>
+    <tr><td>Medicare premium inflation rate</td><td class="num">5%</td><td>How fast Medicare premiums rise. Healthcare costs have usually risen faster than prices in general.</td></tr>
+  </tbody>
+</table></div>

@@ -1,0 +1,67 @@
+<!--
+title: Social Security
+description: How the planner calculates Social Security benefits by claim age, cost-of-living increases, the adjustment factor, survivor benefits and taxation.
+-->
+<h1>Social Security</h1>
+<p class="lead">Social Security is often the largest and safest income in retirement, and when you claim it is one of
+the biggest decisions you make. The planner pays each tax payer's benefit from their claim age, adjusts it for
+inflation and works out how much of it is taxable.</p>
+
+<h2 id="claim-age">Your benefit depends on your claim age</h2>
+<figure>
+  <img src="assets/img/charts/ss-claim-age.svg" alt="Bar chart of monthly benefit by claim age from $2,100 at 62 to $3,720 at 70" width="760" height="320">
+</figure>
+<p>On the <a href="tax-payers.html#social-security">Tax Payers</a> page you enter three monthly estimates from your
+Social Security statement: at the <strong>minimum age</strong> (62), your <strong>full retirement age</strong> (66 or
+67) and the <strong>maximum age</strong> (70). For any claim age in between, the planner draws a straight line between
+these amounts - claiming at 65 in the example pays {{claimMonthly65}} a month. Claiming before 62 pays the minimum;
+after 70, the maximum.</p>
+
+<h3 id="breakeven">Claiming early or late: the break-even age</h3>
+<figure>
+  <img src="assets/img/charts/ss-breakeven.svg" alt="Line chart of total benefits received by age for claiming at 62, 67 and 70" width="760" height="350">
+</figure>
+<p>Claiming early gives you more years of smaller checks; waiting gives fewer years of larger ones. In the example the
+later claim catches up at about age {{breakeven62vs67}} (62 versus 67), {{breakeven62vs70}} (62 versus 70) and
+{{breakeven67vs70}} (67 versus 70). If you expect to live past these ages, waiting usually pays more in total - and a
+larger benefit also means a larger survivor benefit for a spouse. The <a href="optimizer.html">optimizer</a> tests your
+three claim ages together with everything else, including taxes.</p>
+
+<h2 id="payments">How payments are calculated each year</h2>
+<ul>
+  <li>Payments start in the year the tax payer reaches the claim age: monthly amount &times; 12.</li>
+  <li>They rise every year with the <strong>general inflation rate</strong>, like Social Security's cost-of-living
+    adjustment (COLA), measured from plan year 1 - because your estimates are in today's dollars.</li>
+  <li>They are multiplied by the <strong>Social Security adjustment factor</strong> in
+    <a href="reference-tables.html#general-settings">General Settings</a> (85% to start). It lets you plan for a
+    possible future benefit cut; use 100% for none.</li>
+  <li>Payments go into the <a href="withdrawals.html#cash-account">cash account</a>.</li>
+</ul>
+
+<h2 id="survivor">Survivor benefits</h2>
+<p>When one spouse dies, the survivor keeps the <strong>larger</strong> of their own benefit and the deceased spouse's
+benefit - if the deceased had already claimed it. The survivor's smaller benefit stops. The planner does not apply
+the reductions that apply to a survivor who claims early.</p>
+
+<h2 id="taxation">How Social Security is taxed</h2>
+<figure>
+  <img src="assets/img/charts/ss-taxable.svg" alt="Line chart: taxable Social Security rises with other income up to 85% of the benefit" width="760" height="340">
+</figure>
+<p>Between 0% and 85% of your benefits are taxable. The planner fills in the IRS
+<strong>Social Security benefits worksheet</strong> every year:</p>
+<ol>
+  <li>Add half of your benefits to your other income, <em>including tax-exempt interest</em> (worksheet lines 1-7).</li>
+  <li>Up to the <strong>base amount</strong> ($25,000 single, $32,000 married) none of the benefits are taxable.</li>
+  <li>Between the base amount and the base plus the <strong>additional amount</strong> ($9,000 single, $12,000 married),
+    50 cents of benefits become taxable per dollar of income.</li>
+  <li>Above that, 85 cents per dollar - until 85% of the benefits are taxable.</li>
+</ol>
+<p>These thresholds are set in law and are <strong>not</strong> adjusted for inflation, so over time more people pay
+tax on their benefits. In the example, a single person with $30,000 of benefits and $40,000 of other income has
+{{ssTaxableAt40k}} of taxable benefits.</p>
+<div class="callout tip">
+  <span class="title">The "tax torpedo"</span>
+  In the range where benefits are becoming taxable, each extra dollar of IRA income can make up to 85 cents of Social
+  Security taxable too, so the real tax rate on that dollar is much higher than your bracket. Converting to Roth or
+  drawing IRA money <em>before</em> claiming can avoid it. The Annual Tax Forms results show the worksheet line by line.
+</div>

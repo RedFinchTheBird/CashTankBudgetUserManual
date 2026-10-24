@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medicare and IRMAA - CashTank Financial Planner</title>
+  <meta name="description" content="Medicare Part B and Part D premiums from age 65, IRMAA income tiers, MAGI and the two-year lookback.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html" class="active" aria-current="page">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>Medicare and IRMAA</h1>
+<p class="lead">From age 65 the planner adds Medicare premiums for each tax payer. Most people pay the standard Part B
+premium, but higher incomes pay an extra amount called IRMAA - and it is based on your income from two years earlier.</p>
+
+<h2 id="premiums">What the planner pays</h2>
+<ul>
+  <li>For each tax payer <strong>65 or older</strong> and alive that year: the monthly Part B premium plus any Part D
+    IRMAA surcharge, times 12.</li>
+  <li>The standard premium in 2026 is $202.90 a month ($2,435 a year) per person.</li>
+  <li>Premiums rise every year with the <strong>Medicare premium inflation rate</strong> (5% to start) from plan year 1.</li>
+  <li>The premium is paid by Auto with the year's taxes and shows as <em>Medicare Premiums</em> in the results.</li>
+</ul>
+<p>The planner does not include Part D plan premiums, Medigap or Medicare Advantage premiums, or out-of-pocket costs -
+add those as living expenses.</p>
+
+<h2 id="irmaa">IRMAA: income-related premiums</h2>
+<figure>
+  <img src="assets/img/charts/irmaa-tiers.svg" alt="Step chart and table of 2026 IRMAA tiers by modified AGI for single and married filers" width="760" height="340">
+</figure>
+<p>The Income-Related Monthly Adjustment Amount (IRMAA) raises your Medicare premium in steps as your income crosses
+each threshold. At the top it reaches $780.90 a month per person. These are <strong>cliffs</strong>: one dollar
+over a threshold raises the premium for the whole year, for each person on Medicare. The thresholds rise with the
+<em>tax forms inflation rate</em> each year.</p>
+
+<h2 id="magi">MAGI: the income that counts</h2>
+<p>IRMAA uses <strong>modified adjusted gross income</strong>: your AGI (Form 1040 line 11a) plus tax-exempt interest
+(line 2a). The planner shows it in the extra box <strong>11a.1</strong> of the Annual Tax Forms.</p>
+<div class="callout note">
+  <span class="title">Different programs, different "MAGI"</span>
+  Several tax rules use a "modified AGI", each with its own definition. For Medicare IRMAA it is AGI plus tax-exempt
+  interest. The non-taxable part of Social Security is <em>not</em> added - that version is used for Affordable Care Act
+  health insurance subsidies, which the planner does not model.
+</div>
+<p>Everything in AGI counts: IRA withdrawals and RMDs, Roth conversions, capital gains from selling investments, and
+the taxable part of Social Security. Withdrawals from a Roth do not.</p>
+
+<h2 id="lookback">The two-year lookback</h2>
+<figure>
+  <img src="assets/img/charts/irmaa-lookback.svg" alt="Diagram: each year's income sets the Medicare premiums two years later" width="760" height="204">
+</figure>
+<p>Social Security uses the most recent tax return it has - from two years earlier - so your 2028 premiums depend on
+your 2026 income. The tier is chosen using that year's filing status and the thresholds adjusted for inflation to the
+premium year. In the planner, plan years 1 and 2 have no earlier history and use plan year 1's MAGI.</p>
+<div class="callout tip">
+  <span class="title">Watch the years before Medicare</span>
+  Because of the lookback, a large Roth conversion or sale at 63 can raise your Medicare premiums at 65. Converting
+  right up to an IRMAA threshold - but not over it - is a common strategy. Check the 11a.1 box in the tax forms.
+</div>
+<p>In real life, you can ask Social Security to use a more recent year after a life-changing event such as retirement
+(form SSA-44). The planner always uses the two-year lookback.</p>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="rmds.html"><span>Previous</span>Required minimum distributions</a>
+      <a class="next" href="roth-conversions.html"><span>Next</span>Roth conversions</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

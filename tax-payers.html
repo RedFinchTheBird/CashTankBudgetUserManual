@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tax Payers - CashTank Financial Planner</title>
+  <meta name="description" content="Enter each tax payer's birth year, life expectancy, retirement ages and Social Security estimates.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+    <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="28" height="28"><span>CashTank Financial Planner</span><small>User Manual</small></a>
+  </header>
+  <div class="page">
+    <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+      <div class="nav-section">Start here</div>
+      <ul>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+      <div class="nav-section">Screens</div>
+      <ul>
+        <li><a href="tax-payers.html" class="active" aria-current="page">Tax Payers</a></li>
+        <li><a href="income-expenses.html">Income and expenses</a></li>
+        <li><a href="investments.html">Investments</a></li>
+        <li><a href="optimizer.html">Optimizer</a></li>
+        <li><a href="plan-results.html">Plan results</a></li>
+        <li><a href="reference-tables.html">Reference tables and settings</a></li>
+      </ul>
+      <div class="nav-section">How planning works</div>
+      <ul>
+        <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
+        <li><a href="taxes.html">Income taxes and deductions</a></li>
+        <li><a href="social-security.html">Social Security</a></li>
+        <li><a href="rmds.html">Required minimum distributions</a></li>
+        <li><a href="medicare-irmaa.html">Medicare and IRMAA</a></li>
+        <li><a href="roth-conversions.html">Roth conversions</a></li>
+        <li><a href="withdrawals.html">Withdrawals and Auto</a></li>
+        <li><a href="plan-milestones.html">Plan milestones (year codes)</a></li>
+      </ul>
+      <div class="nav-section">Reference</div>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </nav>
+    <main class="content" id="content">
+<h1>Tax Payers <span class="badge built">Built</span></h1>
+<p class="lead">A plan has one or two tax payers: you, and a spouse or partner if you file a joint return. Everything
+else in the plan - ages, retirement, Social Security, RMDs, Medicare, filing status - follows from this page.</p>
+
+<figure class="screenshot">
+  <img src="assets/img/screens/screen-tax-payers.png" alt="Tax Payers page with Alex selected: demographics, retirement ages and Social Security fields" width="1380" height="820">
+  <figcaption>Tax Payers, with two tax payers. The list on the left selects whose details are shown.</figcaption>
+</figure>
+
+<h2 id="list">The tax payer list</h2>
+<ul>
+  <li>The list shows one entry per tax payer, named after the tax payer. It updates as you type the name.</li>
+  <li><strong>Add Taxpayer</strong> adds the second tax payer (named "Taxpayer 2" until you rename it). It is
+    turned off when there are already two.</li>
+  <li><strong>Delete Taxpayer</strong> deletes the tax payer shown, after you confirm. It is turned off when only one
+    is left, because a plan needs at least one.</li>
+  <li>With two tax payers the plan files <strong>married filing jointly</strong>; with one, <strong>single</strong>.
+    In the projection, a surviving spouse files single from the year after the first death.</li>
+</ul>
+
+<div class="callout warn">
+  <span class="title">What deleting a tax payer changes</span>
+  Their wages and pension income are deleted. Their accounts, and every joint account, move to the other tax payer, who
+  becomes tax payer 1. Income and expense dates that pointed at tax payer 2's milestones (for example
+  <code>YORTP2</code>) move to the matching tax payer 1 milestone.
+</div>
+
+<h2 id="demographics">Demographics and retirement horizons</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>What to enter</th><th>Shown under it</th></tr></thead>
+  <tbody>
+    <tr><td>Name</td><td>Any name. It labels the list, results and drop-downs. A blank name shows as "Taxpayer 1" or "Taxpayer 2".</td><td></td></tr>
+    <tr><td>Year of birth</td><td>Pick from 1900-2100. It sets ages, the full retirement age, the RMD start age and when Medicare starts.</td><td>Current age</td></tr>
+    <tr><td>Life expectancy</td><td>The age you plan to live to. The plan runs to the later life expectancy year of the two tax payers.</td><td>Plan horizon (years from now)</td></tr>
+    <tr><td>Retirement age 1, 2, 3</td><td>Up to three ages to compare. Wages stop in the year you reach the retirement age; pensions start that year.</td><td>Retirement year</td></tr>
+  </tbody>
+</table></div>
+<p><strong>Run Plan</strong> uses <em>retirement age 1</em>. The <a href="optimizer.html">optimizer</a> tries all three
+(repeated ages count once).</p>
+
+<div class="callout tip">
+  <span class="title">Choosing a life expectancy</span>
+  Plan for a long life: running out of money at 92 is a bigger problem than leaving some behind. Many planners use 90-95.
+  The life expectancy year is also the <code>YODTP1</code> / <code>YODTP2</code> milestone, the last year of that tax
+  payer's income and benefits.
+</div>
+
+<h2 id="social-security">Social Security</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>What to enter</th><th>Shown under it</th></tr></thead>
+  <tbody>
+    <tr><td>Claim age 1, 2, 3</td><td>Up to three ages to start benefits. Run Plan uses claim age 1; the optimizer tries all three.</td><td>Claim year</td></tr>
+    <tr><td>Min age, Full age, Max age</td><td>The earliest claim age (62), your full retirement age (66 or 67) and the age after which waiting stops increasing the benefit (70). Filled in from the year of birth.</td><td></td></tr>
+    <tr><td>Min amount, Full amount, Max amount</td><td>Your <strong>monthly</strong> benefit in today's dollars if you claim at the min, full and max ages, from your Social Security statement.</td><td>Under Full and Max: the increase over the minimum, in dollars and percent</td></tr>
+  </tbody>
+</table></div>
+<p>For a claim age between these ages, the planner draws a straight line between the amounts. See
+<a href="social-security.html">Social Security</a> for how benefits are adjusted, taxed and passed to a survivor.</p>
+
+<h2 id="defaults">New tax payer defaults</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Field</th><th>Default</th></tr></thead>
+  <tbody>
+    <tr><td>Year of birth</td><td>60 years before the current year</td></tr>
+    <tr><td>Life expectancy</td><td>90</td></tr>
+    <tr><td>Retirement ages</td><td>62, 65, 67</td></tr>
+    <tr><td>Claim ages</td><td>62, full retirement age, 70</td></tr>
+    <tr><td>Min / full / max ages</td><td>62 / full retirement age (67 if born 1960 or later, otherwise 66) / 70</td></tr>
+    <tr><td>Benefit amounts</td><td>$0 - enter your own</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="editing">Editing tips</h2>
+<ul>
+  <li>Ages and the year of birth are chosen with a picker: click the button at the right of the box.
+    <a href="getting-started.html#pickers">More about pickers</a>.</li>
+  <li>A change is kept as soon as you leave the details area or switch to the other tax payer, and it turns on the
+    <strong>Save</strong> button.</li>
+</ul>
+
+    <nav class="pager" aria-label="Previous and next pages">
+      <a class="prev" href="getting-started.html"><span>Previous</span>Getting started</a>
+      <a class="next" href="income-expenses.html"><span>Next</span>Income and expenses</a>
+    </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>CashTank Financial Planner user manual. Tax values are for 2026 and are inflated by the planner for later years.
+    The planner is an educational tool, not tax, legal or investment advice.</p>
+  </footer>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

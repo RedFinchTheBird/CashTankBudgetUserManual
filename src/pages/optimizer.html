@@ -1,0 +1,70 @@
+<!--
+title: Optimizer
+description: The optimizer runs every combination of retirement ages, Social Security claim ages, Roth buckets and market scenarios and picks the plan that lasts longest.
+-->
+<h1>Optimizer <span class="badge preview">Preview</span></h1>
+<p class="lead">Instead of guessing the best retirement age or when to claim Social Security, let the planner try them
+all. The optimizer runs your plan once for every combination of your choices, in both a normal and a down market.</p>
+
+<div class="callout preview">
+  <span class="title">Screen in progress</span>
+  The picture is a mockup. The optimizer calculation is finished.
+</div>
+
+<figure>
+  <img src="assets/img/screens/ui-optimizer.svg" alt="Mockup of the Optimizer page: the scenario choices, the Roth buckets table and the Run Optimizer button" width="960" height="540">
+  <figcaption>Mockup: the optimizer settings and the Roth buckets.</figcaption>
+</figure>
+
+<h2 id="what-it-varies">What it varies</h2>
+<figure>
+  <img src="assets/img/charts/optimizer-combinations.svg" alt="Diagram: 3 x 3 x 3 x 3 x 4 x 2 = 648 scenarios with two tax payers" width="760" height="250">
+</figure>
+<ul>
+  <li><strong>Retirement ages</strong> - retirement ages 1, 2 and 3 of each tax payer, from the
+    <a href="tax-payers.html">Tax Payers</a> page.</li>
+  <li><strong>Social Security claim ages</strong> - claim ages 1, 2 and 3 of each tax payer.</li>
+  <li><strong>Roth conversions</strong> - none, or each of the <a href="roth-conversions.html">Roth buckets</a>
+    (10%, 12% and 22% to start).</li>
+  <li><strong>Market</strong> - <a href="asset-classes.html#down-market">normal and down and flat</a>.</li>
+</ul>
+<p>A repeated age counts once, so entering 65, 65, 65 tests only 65. Everything else in the plan stays the same.
+Milestone dates such as <code>YORTP1</code> move with each scenario's retirement and claim ages.</p>
+
+<h2 id="best">How the best scenario is chosen</h2>
+<ol>
+  <li>Only <strong>down-market</strong> runs are compared, because a plan that survives a bad market will survive a
+    normal one.</li>
+  <li>The run whose money lasts to the <strong>latest year</strong> wins.</li>
+  <li>If several last to the end of the plan, the one with the highest <strong>net asset value</strong> in the final year
+    wins.</li>
+</ol>
+<p>The best scenario gets full year-by-year results (cash flows, balances, tax forms). Every other scenario gets one
+summary row; you can calculate the full results of any of them when you want to look closer.</p>
+
+<div class="callout note">
+  <span class="title">Net asset value is in future dollars</span>
+  Final net asset value is in the dollars of the final year, not today's dollars. Compare scenarios with each other
+  rather than reading the number as today's purchasing power.
+</div>
+
+<h2 id="results">Reading the optimizer results</h2>
+<p>The results are on <a href="plan-results.html#optimizer">Plan Results &gt; Optimizer</a>, one row per scenario:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Scenario</td><td>Scenario number (1, 2, 3...).</td></tr>
+    <tr><td>SS claim age / retirement age (each tax payer)</td><td>The ages used in this scenario.</td></tr>
+    <tr><td>Roth fill bucket</td><td>The bucket filled each year, or blank for no Roth conversions.</td></tr>
+    <tr><td>Market</td><td>Normal Market or Down and Flat Market.</td></tr>
+    <tr><td>End of plan year</td><td>The last year of the plan: the final life expectancy year, or the year the money ran out.</td></tr>
+    <tr><td>NAV</td><td>Net asset value (all accounts) at the end of that year.</td></tr>
+  </tbody>
+</table></div>
+<p>Running the optimizer again replaces the earlier optimizer results. The results of <strong>Run Plan</strong> are kept.</p>
+
+<div class="callout tip">
+  <span class="title">Read more than the winner</span>
+  Look at how much the final net asset value changes between neighbouring choices. If claiming at 67 or 70 makes little
+  difference, other things (health, family, peace of mind) can decide.
+</div>
