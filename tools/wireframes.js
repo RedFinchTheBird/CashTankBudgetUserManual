@@ -172,10 +172,10 @@ function optimizer() {
       'Roth conversions: none, or fill each Roth bucket below every year until RMDs start',
       'Markets: Normal (long-run averages) and Down and flat (asset class history from the worst start year)',
     ], { size: 11.5, lineHeight: 20 });
-    b += T(c.x + 14, c.y + 130, 'Two tax payers with three choices each: 3 x 3 x 3 x 3 x 4 x 2 = 648 scenarios', { size: 12, weight: 700, color: COLOR.blueDark });
+    b += T(c.x + 14, c.y + 130, 'Two tax payers with three choices each: 3 x 3 x 3 x 3 x 3 x 2 = 486 scenarios', { size: 12, weight: 700, color: COLOR.blueDark });
     b += panelHeader(c.x, c.y + 168, 340, 'Roth buckets');
     b += grid(c.x, c.y + 194, [['Bucket', 90], ['Bracket rate', 110, 'right'], ['Fill up to', 140, 'right']], [
-      ['10%', '10%', '$24,800'], ['12%', '12%', '$100,800'], ['22%', '22%', '$211,400']]);
+      ['22%', '22%', '$211,400'], ['24%', '24%', '$403,550']]);
     b += T(c.x, c.y + 312, 'Married amounts; they follow filing status and inflation.', { size: 10.5, color: COLOR.muted });
     b += panelHeader(c.x + 360, c.y + 168, c.w - 360, 'Run');
     b += R(c.x + 360, c.y + 194, c.w - 360, 120, '#ffffff');
@@ -192,10 +192,10 @@ function planResultsGrid() {
     b += grid(gx, c.y, [['Year', 40], ['Alex', 34, 'right'], ['Jordan', 42, 'right'], ['Description', 112], ['From', 74], ['To', 86], ['Amount', 62, 'right'], ['1040', 28]], [
       ['2027', '63', '60', 'Jordan salary', 'Jordan', 'Joint Savings', '$87,550', '1a'],
       ['2027', '63', '60', 'Social Security', 'Alex', 'Joint Savings', '$22,063', '6a'],
-      ['2027', '63', '60', 'Roth Conversion', 'Alex IRA', 'Alex Roth', '$40,210', '4a'],
       ['2027', '63', '60', 'Groceries', 'Joint Savings', 'Living Expenses', '$12,360', ''],
       ['2027', '63', '60', 'Federal Income Tax', 'Joint Savings', 'Federal Income Tax', '$9,812', ''],
       ['2027', '63', '60', 'State Income Tax', 'Joint Savings', 'State Income Tax', '$3,940', ''],
+      ['2027', '63', '60', 'Roth Conversion', 'Alex IRA', 'Alex Roth', '$40,210', '4a'],
       ['2028', '64', '61', 'Jordan salary', 'Jordan', 'Joint Savings', '$90,177', '1a'],
     ], { extraRows: 4 });
     b += callout(gx, c.y + 300, 478, ['Each row is one movement of money in one plan year. Filter by year, description,', 'From or To; the Annual Tax Forms view shows the 1040 and Social Security worksheet.']);

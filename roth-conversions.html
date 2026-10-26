@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Roth conversions - CashTank Financial Planner</title>
-  <meta name="description" content="How Roth buckets work, how much the planner converts each year, when conversions stop, and the trade-offs.">
+  <meta name="description" content="The 22% and 24% Roth buckets, exactly when and how much the planner converts each year, when the tax is paid, worked examples and the trade-offs.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -50,13 +50,21 @@
     <main class="content" id="content">
 <h1>Roth conversions</h1>
 <p class="lead">A Roth conversion moves money from a traditional IRA or 401(k) into a Roth account. You pay income tax
-on the amount now; after that it grows tax free, is withdrawn tax free and has no RMDs. Converting in low-income years
-can lower your lifetime taxes.</p>
+on the amount converted; after that it grows tax free, is withdrawn tax free and has no RMDs. Converting in years when
+your tax bracket is lower than it will be later can lower your lifetime taxes.</p>
+
+<div class="callout note">
+  <span class="title">The short version</span>
+  Each year, after every other bill of the year is paid, the planner moves just enough from your IRA or 401(k) to your
+  Roth to bring that year's taxable income (Form 1040 line 15) up to the top of the chosen tax bracket - never past
+  it. The tax on the conversion is paid the next year.
+</div>
 
 <h2 id="why">Why convert?</h2>
 <ul>
-  <li><strong>Fill low brackets.</strong> Between retirement and Social Security or RMDs, your income may be unusually
-    low. Converting fills the 10%, 12% or 22% brackets that would otherwise go unused.</li>
+  <li><strong>Pay a known rate now instead of a higher one later.</strong> RMDs, Social Security and, for a surviving
+    spouse, the narrower single brackets can push later income into the 32% bracket or above. Filling the 22% or 24%
+    bracket now, while you still control your income, can cost less overall.</li>
   <li><strong>Smaller RMDs later.</strong> A smaller IRA means smaller <a href="rmds.html">required distributions</a>
     in your 70s and 80s, which could otherwise push you into higher brackets.</li>
   <li><strong>Less tax on Social Security and lower Medicare premiums later</strong>, because Roth withdrawals are not
@@ -67,47 +75,108 @@ can lower your lifetime taxes.</p>
 depends on your tax rates now versus later, which is exactly what the <a href="optimizer.html">optimizer</a> tests.</p>
 
 <h2 id="buckets">Roth buckets</h2>
-<figure>
-  <img src="assets/img/charts/roth-buckets.svg" alt="Bars showing how much a single person with no other income converts to fill the 10%, 12% and 22% brackets" width="760" height="300">
-</figure>
-<p>A <strong>Roth bucket</strong> is a tax bracket to fill. Each year, the planner converts just enough to bring
-taxable income up to the top of that bracket. The planner starts with three buckets - the 10%, 12% and 22% brackets -
-for your filing status. For a single person with no other income in 2026:</p>
+<p>A <strong>Roth bucket</strong> is a federal tax bracket to fill. The planner's buckets are the
+<strong>3rd and 4th federal brackets - 22% and 24%</strong> - for your filing status:</p>
 <div class="table-wrap"><table>
-  <thead><tr><th>Bucket</th><th class="num">Fill taxable income to</th><th class="num">Convert</th><th class="num">Federal tax</th></tr></thead>
+  <thead><tr><th>Bucket</th><th class="num">Single: fill taxable income up to</th><th class="num">Married filing jointly: up to</th></tr></thead>
   <tbody>
-    <tr><td>10%</td><td class="num">$12,400</td><td class="num">$28,500</td><td class="num">$1,240</td></tr>
-    <tr><td>12%</td><td class="num">$50,400</td><td class="num">$66,500</td><td class="num">$5,800</td></tr>
-    <tr><td>22%</td><td class="num">$105,700</td><td class="num">$121,800</td><td class="num">$17,966</td></tr>
+    <tr><td>22%</td><td class="num">$105,700</td><td class="num">$211,400</td></tr>
+    <tr><td>24%</td><td class="num">$201,775</td><td class="num">$403,550</td></tr>
   </tbody>
 </table></div>
-<p>The conversion is larger than the bracket because the standard deduction ($16,100) comes first. Any other income -
-wages, a pension, taxable Social Security, dividends, RMDs - uses up part of the bucket, so less is converted. State
-tax is extra.</p>
+<p>These are 2026 limits. Each later year they rise with the tax forms inflation rate, and they follow the filing
+status: married limits while both tax payers are alive, single limits after the first death. A plan keeps the buckets
+it was created with, so plans created by earlier versions still use 10%, 12% and 22%.</p>
+<figure>
+  <img src="assets/img/charts/roth-buckets.svg" alt="Bars showing how much a single person with no other income converts to fill the 22% and 24% brackets" width="760" height="240">
+</figure>
+<p>For a single person with no other income in 2026, filling the 22% bucket means converting $121,800
+(federal tax $17,966), and filling the 24% bucket means converting $217,875 (federal tax
+$41,024). The conversion is larger than the bracket because the standard deduction ($16,100) comes first. Any
+other income - wages, a pension, taxable Social Security, dividends, RMDs, IRA withdrawals - uses up part of the
+bucket, so less is converted. State tax is extra.</p>
 
-<h2 id="rules">How the planner converts</h2>
+<h2 id="rules">How the planner converts, step by step</h2>
+<ol>
+  <li><strong>Conversions come last in the year.</strong> They are step 7 of the
+    <a href="how-the-plan-works.html#yearly-steps">yearly steps</a>, after income, Social Security, RMDs, living
+    expenses, last year's income tax and this year's Medicare premiums. Paying those bills can take money from an IRA
+    or 401(k), or sell investments at a gain - both are taxable income - so the planner waits until all of them are on
+    the year's return before it measures the room left in the bucket.</li>
+  <li><strong>Who converts.</strong> Each tax payer who is alive and has not reached their RMD start age (72, 73 or 75,
+    depending on year of birth). Tax payer 1 goes first, then tax payer 2. A married couple files one return, so they
+    share one bucket: tax payer 2 converts only the room tax payer 1 left, for example when tax payer 1's IRA is empty
+    or their RMDs have started.</li>
+  <li><strong>How much.</strong> The <em>room</em> is the bucket's top minus the year's taxable income so far. The
+    planner converts the largest amount that brings taxable income up to the top and not past it. If taxable income is
+    already at or above the top, nothing is converted that year.</li>
+  <li><strong>From where, to where.</strong> The money comes from the tax payer's own IRA and 401(k) accounts in
+    proportion to their balances (investments that lost value that year are used last) and goes into their own Roth
+    account. If they have no Roth, the first Roth account in the plan is used. With no Roth account holding an
+    investment, nothing is converted.</li>
+  <li><strong>On the tax form.</strong> A conversion is reported on Form 1040 line 4a (from an IRA) or 5a (from a
+    401(k)) and shown as <em>Roth Conversion</em> in the cash flows. It moves your own money between accounts, so it is
+    not an expense and does not appear in the income and expense table.</li>
+  <li><strong>The tax is paid next year.</strong> The conversion's federal and state tax is on this year's return and
+    is paid by Auto in step 6 of the next year, with the rest of that year's taxes - from savings first, which is
+    usually what you want. If Auto has to take it from an IRA, that withdrawal is income of the next year and uses part
+    of the next year's bucket.</li>
+</ol>
+
+<h2 id="example">Example: the room left in the bucket</h2>
+<p>Pat is single, 63 and retired, with a $30,000 pension. Pat's savings are used up, so Auto takes the
+living expenses and last year's tax from the IRA. The plan fills the 22% bucket in 2026:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>2026</th><th class="num">Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Pension (line 5a)</td><td class="num">$30,000</td></tr>
+    <tr><td>IRA withdrawal for living expenses (step 5, line 4a)</td><td class="num">$25,000</td></tr>
+    <tr><td>IRA withdrawal for last year's tax (step 6, line 4a)</td><td class="num">$5,000</td></tr>
+    <tr><td>Income before the conversion</td><td class="num">$60,000</td></tr>
+    <tr><td>Standard deduction</td><td class="num">-$16,100</td></tr>
+    <tr><td>Taxable income before the conversion</td><td class="num">$43,900</td></tr>
+    <tr><td>Top of the 22% bucket</td><td class="num">$105,700</td></tr>
+    <tr class="highlight"><td><strong>Roth conversion</strong> (step 7): the room</td><td class="num"><strong>$61,800</strong></td></tr>
+    <tr><td>Income after the conversion</td><td class="num">$121,800</td></tr>
+    <tr><td>Taxable income after the conversion (line 15)</td><td class="num">$105,700</td></tr>
+  </tbody>
+</table></div>
+<p>The conversion adds $12,946 of federal tax (partly at 12%, mostly at 22%) and $2,472 of state
+tax at the 4% placeholder rate, paid in 2027. Converting last is what keeps the bucket exact: had the planner converted
+first, the $25,000 and $5,000 IRA withdrawals would have landed on top of a full bucket
+and been taxed at 24%.</p>
+
+<h2 id="smaller">Why the conversion can be smaller than the room</h2>
+<p>Usually each converted dollar adds one dollar of taxable income. Two rules can make it add more:</p>
 <ul>
-  <li>Conversions happen <strong>every year until the owner's RMDs start</strong> (72, 73 or 75 depending on year of
-    birth), and only while the owner is alive.</li>
-  <li>The money comes from the owner's IRA and 401(k) accounts, in proportion to their balances, and goes into the
-    owner's Roth account. If the owner has no Roth, any Roth account in the plan is used. The plan needs a Roth account
-    with at least one investment for conversions to happen.</li>
-  <li>The bucket's limit rises every year with the tax forms inflation rate, and follows the filing status (married
-    limits while both are alive, single after).</li>
-  <li>Conversions are reported on Form 1040 line 4a (from an IRA) or 5a (from a 401(k)) and shown as
-    <em>Roth Conversion</em> in the cash flows.</li>
-  <li>The tax on the conversion is paid by Auto with the rest of the year's taxes - from savings first, which is
-    usually what you want.</li>
+  <li><strong>Social Security.</strong> More income makes more of your benefits taxable - up to 85 cents more for each
+    dollar - until 85% of the benefits are taxable. See <a href="social-security.html#taxation">how Social Security is
+    taxed</a>.</li>
+  <li><strong>Senior deduction.</strong> In 2025-2028 the $6,000 senior deduction shrinks by 6 cents for each dollar
+    of AGI above $75,000 (single) or $150,000 (married). See
+    <a href="taxes.html#senior-deduction">the senior deduction</a>.</li>
 </ul>
-<p><strong>Run Plan</strong> does no conversions. The <a href="optimizer.html">optimizer</a> tries no conversions and
-each bucket in turn.</p>
+<p>The planner allows for both: it tries amounts until taxable income lands exactly on the bucket's top, so a bucket
+is never overfilled.</p>
+<p>Example: Lee is single, 70, with $30,000 of Social Security and no other income, and fills the 22%
+bucket in 2026. Before converting, none of the benefits are taxable and the deductions are $24,150, so the
+room looks like $129,850. Converting that much would make $25,500 of the benefits taxable and shrink
+the senior deduction, for taxable income of $136,021 - $30,321 into the 24% bracket. The planner
+converts $101,245 instead: AGI is $126,745 (the conversion plus $25,500 of taxable benefits),
+the senior deduction is down to $2,895, and taxable income is exactly $105,700.</p>
+
+<h2 id="optimizer">Run Plan and the optimizer</h2>
+<p><strong>Run Plan</strong> does no conversions. The <a href="optimizer.html">optimizer</a> runs every combination
+of ages three ways - no conversions, the 22% bucket and the 24% bucket - in both markets, so you can compare the final
+net asset value of the same ages with and without conversions.</p>
 
 <div class="callout warn">
   <span class="title">Watch the side effects</span>
   A conversion raises your AGI, which can reduce the <a href="taxes.html#senior-deduction">senior deduction</a>, make
   more <a href="social-security.html#taxation">Social Security taxable</a>, and - two years later - raise your
-  <a href="medicare-irmaa.html">Medicare premiums</a>. Look at the tax forms for conversion years, especially boxes 13b
-  and 11a.1.
+  <a href="medicare-irmaa.html">Medicare premiums</a>. Filling the 22% bucket already puts MAGI above the first IRMAA
+  tier ($109,000 single, $218,000 married in 2026). The planner charges the higher premiums but does not shrink a
+  conversion to stay under a tier. Look at the tax forms for conversion years, especially boxes 13b and 11a.1.
 </div>
 
     <nav class="pager" aria-label="Previous and next pages">

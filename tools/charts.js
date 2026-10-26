@@ -541,13 +541,13 @@ function irmaaLookback() {
 // Roth conversions
 //------------------------------------------------------------------------------
 function rothBuckets(values) {
-  const W = 760, H = 300, x0 = 110, w = 520, maxX = 130000;
+  const W = 760, H = 240, x0 = 110, w = 470, maxX = 230000;
   const sx = v => x0 + (v / maxX) * w;
   const ded = D.DEDUCTIONS.standard.single;
   let b = header('Roth buckets: convert until taxable income reaches the top of a bracket', 'Single, no other income, 2026 (federal tax shown; state tax is extra)');
-  const fills = [COLOR.border, COLOR.blueLight, COLOR.blueMid, COLOR.blue];
-  [10, 12, 22].forEach((rate, bi) => {
-    const y = 70 + bi * 70, top = D.FEDERAL.single[bi];
+  const fills = [COLOR.border, COLOR.blueLight, COLOR.blueMid, COLOR.blue, COLOR.blueDark];
+  [[22, 2], [24, 3]].forEach(([rate, bi], row) => {
+    const y = 70 + row * 70, top = D.FEDERAL.single[bi];
     b += T(x0 - 12, y + 22, `${rate}% bucket`, { anchor: 'end', size: 12.5, weight: 600 });
     let lower = 0;
     b += R(sx(0), y, sx(ded) - sx(0), 32, fills[0], { stroke: '#fff', strokeWidth: 2 });
@@ -562,8 +562,44 @@ function rothBuckets(values) {
     values[`roth${rate}Convert`] = money(conv);
     values[`roth${rate}Tax`] = money(tax);
   });
-  b += legend(16, H - 14, [{ label: 'Standard deduction (no tax)', color: fills[0] }, { label: '10%', color: fills[1] }, { label: '12%', color: fills[2] }, { label: '22%', color: fills[3] }]);
+  b += legend(16, H - 14, [{ label: 'Standard deduction (no tax)', color: fills[0] }, { label: '10%', color: fills[1] }, { label: '12%', color: fills[2] }, { label: '22%', color: fills[3] }, { label: '24%', color: fills[4] }]);
+  rothExamples(values);
   return svgDoc(W, H, 'Roth bucket conversion amounts', b);
+}
+
+// Worked examples on the Roth conversions page, with the engine's rules: the conversion
+// comes last in the year and is the most that keeps taxable income at the bucket top.
+function rothExamples(values) {
+  const F = D.FEDERAL, ded = D.DEDUCTIONS, top22 = F.single[2];
+  const tax = ti => bracketTax(ti, F.single, F.rates);
+
+  // 1. The room left after the year's other income, IRA withdrawals included
+  const pension = 30000, iraExpenses = 25000, iraLastTax = 5000;
+  const income = pension + iraExpenses + iraLastTax, before = income - ded.standard.single;
+  const convert = top22 - before;
+  Object.assign(values, {
+    rothExPension: money(pension), rothExIraExpenses: money(iraExpenses), rothExIraLastTax: money(iraLastTax),
+    rothExIncome: money(income), rothExDeduction: money(ded.standard.single), rothExBefore: money(before),
+    rothExTop: money(top22), rothExConvert: money(convert), rothExAfterIncome: money(income + convert),
+    rothExFedTax: money(tax(top22) - tax(before)), rothExStateTax: money(convert * D.STATE_RATE / 100),
+  });
+
+  // 2. Age 70, Social Security only: converting also makes benefits taxable and phases
+  // out the senior deduction, so the planner converts less than the room
+  const ss = 30000;
+  const deductionsAt = agi => ded.standard.single + ded.add65.single +
+    Math.max(0, ded.senior.amount - Math.max(0, agi - ded.senior.single) * ded.senior.phaseOutRate / 100);
+  const taxableAt = x => { const agi = x + taxableSS(ss, x, 'single'); return Math.max(0, agi - deductionsAt(agi)); };
+  const room = top22 + deductionsAt(0);
+  let lo = 0, hi = room;
+  while (hi - lo > 0.001) { const mid = (lo + hi) / 2; if (taxableAt(mid) <= top22) lo = mid; else hi = mid; }
+  const agi = lo + taxableSS(ss, lo, 'single');
+  Object.assign(values, {
+    rothSsBenefit: money(ss), rothSsDeductions: money(deductionsAt(0)), rothSsRoom: money(room),
+    rothSsConvert: money(lo), rothSsTaxableSS: money(taxableSS(ss, lo, 'single')),
+    rothSsSenior: money(deductionsAt(agi) - ded.standard.single - ded.add65.single), rothSsAgi: money(agi),
+    rothSsOverfill: money(taxableAt(room)), rothSsOverBy: money(taxableAt(room) - top22),
+  });
 }
 
 //------------------------------------------------------------------------------
@@ -594,8 +630,8 @@ function yearlySteps() {
   const steps = [
     ['1 Market', ['growth + yield on', 'each investment']], ['2 Income', ['wages and pensions', 'into their accounts']],
     ['3 Social Security', ['benefits into the', 'cash account']], ['4 RMDs', ['IRA / 401(k) minimum', 'into the cash account']],
-    ['5 Roth conversions', ['fill the chosen', 'bracket']], ['6 Expenses', ['from an account', 'or Auto']],
-    ['7 Taxes + Medicare', ['federal, state, IRMAA', 'paid by Auto']], ['Record the year', ['balances, NAV,', 'tax forms']],
+    ['5 Expenses', ['from an account', 'or Auto']], ['6 Taxes + Medicare', ["last year's taxes,", "this year's IRMAA"]],
+    ['7 Roth conversions', ['fill the chosen', 'bracket, last']], ['Close the year', ["this year's tax (paid", 'next year), NAV, forms']],
   ];
   steps.forEach(([t, s], i) => {
     const row = Math.floor(i / 4), col = i % 4;
@@ -641,7 +677,7 @@ function yearCodes() {
 function optimizerCombos() {
   const W = 760, H = 250;
   let b = header('How many scenarios the optimizer runs', 'Every combination of the distinct choices you entered (example with three of each)');
-  const items = [['3', 'TP1 retirement', 'ages'], ['3', 'TP1 claim', 'ages'], ['3', 'TP2 retirement', 'ages'], ['3', 'TP2 claim', 'ages'], ['4', 'Roth: none,', '10%, 12%, 22%'], ['2', 'markets:', 'normal, down']];
+  const items = [['3', 'TP1 retirement', 'ages'], ['3', 'TP1 claim', 'ages'], ['3', 'TP2 retirement', 'ages'], ['3', 'TP2 claim', 'ages'], ['3', 'Roth: none,', '22%, 24%'], ['2', 'markets:', 'normal, down']];
   items.forEach(([v, a, c], i) => {
     const x = 14 + i * 116;
     b += R(x, 66, 92, 84, COLOR.blueFaint, { stroke: COLOR.border, rx: 8 });
@@ -649,8 +685,8 @@ function optimizerCombos() {
     b += TL(x + 46, 118, [a, c], { anchor: 'middle', size: 10.5, color: COLOR.text, lineHeight: 13 });
     if (i < items.length - 1) b += T(x + 104, 112, 'x', { anchor: 'middle', size: 16, weight: 700, color: COLOR.slate });
   });
-  b += T(W / 2, 186, '= 648 scenarios with two tax payers', { anchor: 'middle', size: 16, weight: 700, color: COLOR.blueDark });
-  b += T(W / 2, 212, 'One tax payer: 3 x 3 x 4 x 2 = 72 scenarios. Repeated ages count once.', { anchor: 'middle', size: 12, color: COLOR.muted });
+  b += T(W / 2, 186, '= 486 scenarios with two tax payers', { anchor: 'middle', size: 16, weight: 700, color: COLOR.blueDark });
+  b += T(W / 2, 212, 'One tax payer: 3 x 3 x 3 x 2 = 54 scenarios. Repeated ages count once.', { anchor: 'middle', size: 12, color: COLOR.muted });
   return svgDoc(W, H, 'Optimizer scenario count', b);
 }
 
@@ -663,7 +699,7 @@ function moneyFlow() {
   b += T(381, 90, 'Accounts', { anchor: 'middle', size: 14, weight: 700 });
   b += TL(381, 112, ['Savings, Checking, Brokerage', 'IRA, 401(k), Roth, HSA, 529', '', 'each holds investments that', 'grow and pay yield every year', '', 'Roth conversions move money', 'IRA / 401(k) -> Roth'], { anchor: 'middle', size: 11.5, color: COLOR.text, lineHeight: 16 });
   b += TL(381, 278, ['SS and RMDs go to the cash account:', 'first Savings, then Checking,', 'then Brokerage'], { anchor: 'middle', size: 10.5, color: COLOR.muted, lineHeight: 13 });
-  const right = [['Living expenses', 'from an account or Auto'], ['Federal income tax', 'paid by Auto'], ['State income tax', 'paid by Auto'], ['Medicare premiums', 'from 65, paid by Auto']];
+  const right = [['Living expenses', 'from an account or Auto'], ['Federal income tax', 'paid by Auto next year'], ['State income tax', 'paid by Auto next year'], ['Medicare premiums', 'from 65, paid by Auto']];
   right.forEach(([t, s], i) => { b += box(584, 66 + i * 70, 160, 54, t, [s], { fill: COLOR.orangeLight, titleTop: 22 }); });
   left.forEach((_, i) => { b += L(178, 93 + i * 70, 282, 120 + i * 50, COLOR.slate, 1.4, { arrow: true }); });
   right.forEach((_, i) => { b += L(478, 120 + i * 50, 580, 93 + i * 70, COLOR.slate, 1.4, { arrow: true }); });

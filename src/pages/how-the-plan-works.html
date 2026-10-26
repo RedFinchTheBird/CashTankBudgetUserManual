@@ -13,7 +13,7 @@ calendar year at a time, applying the same steps every year, until the last tax 
 
 <h2 id="yearly-steps">Each year, step by step</h2>
 <figure>
-  <img src="assets/img/charts/yearly-steps.svg" alt="Diagram of the seven yearly steps: market, income, Social Security, RMDs, Roth conversions, expenses, taxes and Medicare, then record the year" width="760" height="300">
+  <img src="assets/img/charts/yearly-steps.svg" alt="Diagram of the seven yearly steps: market, income, Social Security, RMDs, expenses, taxes and Medicare, Roth conversions, then close the year" width="760" height="300">
 </figure>
 <ol>
   <li><strong>Market.</strong> Every investment grows by its growth rate and earns its yield on the balance at the start
@@ -25,17 +25,17 @@ calendar year at a time, applying the same steps every year, until the last tax 
     See <a href="social-security.html">Social Security</a>.</li>
   <li><strong>RMDs.</strong> From the RMD start age, the required minimum is taken from each IRA and 401(k) and paid
     into the cash account. See <a href="rmds.html">RMDs</a>.</li>
-  <li><strong>Roth conversions.</strong> If the scenario fills a Roth bucket, IRA / 401(k) money is moved to a Roth
-    until taxable income reaches the bucket's limit. See <a href="roth-conversions.html">Roth conversions</a>.</li>
   <li><strong>Expenses.</strong> Each living expense is paid from its account or by Auto. See
     <a href="withdrawals.html">withdrawals and Auto</a>.</li>
-  <li><strong>Taxes and Medicare.</strong> The year's federal and state income tax and Medicare premiums are worked
-    out and paid by Auto. Because paying them can create more taxable income (for example an IRA withdrawal), the
-    planner recalculates until the bill is fully paid. See <a href="taxes.html">taxes</a> and
-    <a href="medicare-irmaa.html">Medicare</a>.</li>
+  <li><strong>Taxes and Medicare.</strong> Auto pays last year's federal and state income tax and this year's
+    Medicare premiums. A withdrawal that pays a tax bill is income of the year it is made, so it goes on this year's
+    return. See <a href="taxes.html">taxes</a> and <a href="medicare-irmaa.html">Medicare</a>.</li>
+  <li><strong>Roth conversions.</strong> If the scenario fills a Roth bucket, IRA / 401(k) money is moved to a Roth
+    until taxable income reaches the bucket's limit. This comes last, after every other withdrawal of the year, so the
+    bucket is filled exactly. See <a href="roth-conversions.html">Roth conversions</a>.</li>
 </ol>
-<p>The planner then records the year: account balances, cash flows, income and expenses, net asset value and the tax
-forms.</p>
+<p>The planner then closes the year: it works out this year's federal and state tax, to be paid next year, and records
+account balances, cash flows, income and expenses, net asset value and the tax forms.</p>
 
 <h2 id="inflation">Inflation and today's dollars</h2>
 <figure>
@@ -81,11 +81,16 @@ market; the optimizer runs both. See <a href="asset-classes.html#down-market">no
   <li><strong>Penalties.</strong> There are no early-withdrawal penalties for IRA or 401(k) money taken before 59&frac12;.</li>
   <li><strong>State tax.</strong> State tax uses the state brackets on federal taxable income plus tax-exempt
     interest; state-specific rules (such as exempting Social Security or pensions) are not modeled.</li>
+  <li><strong>Tax timing.</strong> Each year's tax is paid the following year. The planner has no figures for the
+    year before the plan, so plan year 1 pays its own tax - worked out before its Roth conversion - as the estimate of
+    last year's. The last plan year also pays its own tax, so nothing is left owing; the withdrawal for that final bill
+    is not taxed again.</li>
   <li><strong>Social Security.</strong> A survivor receives the deceased's benefit only if the deceased had already
     claimed it; survivor reductions are not applied. Benefits for a living spouse based on the other's record (spousal
     benefits) are not modeled - enter the higher of the two in each person's own estimate if that applies to you.</li>
-  <li><strong>Roth conversions</strong> fill the bucket before the year's expenses and taxes are paid, so later
-    withdrawals can push taxable income above the bucket's limit.</li>
+  <li><strong>Roth conversions</strong> fill the bucket to its top on total taxable income (line 15), including
+    qualified dividends and capital gains. Their side effects on the senior deduction, Social Security and later
+    Medicare premiums are counted, but the bucket is not lowered to avoid an IRMAA tier.</li>
   <li><strong>No rebalancing.</strong> Each investment grows on its own; new money is split by Mix and withdrawals are
     proportional to balance.</li>
 </ul>

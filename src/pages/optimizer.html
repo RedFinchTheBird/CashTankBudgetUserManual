@@ -18,14 +18,15 @@ all. The optimizer runs your plan once for every combination of your choices, in
 
 <h2 id="what-it-varies">What it varies</h2>
 <figure>
-  <img src="assets/img/charts/optimizer-combinations.svg" alt="Diagram: 3 x 3 x 3 x 3 x 4 x 2 = 648 scenarios with two tax payers" width="760" height="250">
+  <img src="assets/img/charts/optimizer-combinations.svg" alt="Diagram: 3 x 3 x 3 x 3 x 3 x 2 = 486 scenarios with two tax payers" width="760" height="250">
 </figure>
 <ul>
   <li><strong>Retirement ages</strong> - retirement ages 1, 2 and 3 of each tax payer, from the
     <a href="tax-payers.html">Tax Payers</a> page.</li>
   <li><strong>Social Security claim ages</strong> - claim ages 1, 2 and 3 of each tax payer.</li>
   <li><strong>Roth conversions</strong> - none, or each of the <a href="roth-conversions.html">Roth buckets</a>
-    (10%, 12% and 22% to start).</li>
+    (the 22% and 24% brackets). Each bucket is filled every year until RMDs start, as the last step of the year; see
+    <a href="roth-conversions.html#rules">how the planner converts</a>.</li>
   <li><strong>Market</strong> - <a href="asset-classes.html#down-market">normal and down and flat</a>.</li>
 </ul>
 <p>A repeated age counts once, so entering 65, 65, 65 tests only 65. Everything else in the plan stays the same.
