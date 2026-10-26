@@ -79,26 +79,41 @@ bucket, so less is converted. State tax is extra.</p>
 
 <h2 id="example">Example: the room left in the bucket</h2>
 <p>Pat is single, 63 and retired, with a {{rothExPension}} pension. Pat's savings are used up, so Auto takes the
-living expenses and last year's tax from the IRA. The plan fills the 22% bucket in 2026:</p>
+living expenses and last year's tax from the IRA. The plan fills the 22% bucket in 2026.</p>
+<p><strong>1. Before the conversion.</strong> After steps 5 and 6, Pat's 2026 return looks like this. The planner
+compares taxable income with the top of the bucket to find the room left:</p>
 <div class="table-wrap"><table>
-  <thead><tr><th>2026</th><th class="num">Amount</th></tr></thead>
+  <thead><tr><th>Pat's 2026 return before the conversion</th><th class="num">Amount</th></tr></thead>
   <tbody>
     <tr><td>Pension (line 5a)</td><td class="num">{{rothExPension}}</td></tr>
     <tr><td>IRA withdrawal for living expenses (step 5, line 4a)</td><td class="num">{{rothExIraExpenses}}</td></tr>
     <tr><td>IRA withdrawal for last year's tax (step 6, line 4a)</td><td class="num">{{rothExIraLastTax}}</td></tr>
-    <tr><td>Income before the conversion</td><td class="num">{{rothExIncome}}</td></tr>
-    <tr><td>Standard deduction</td><td class="num">-{{rothExDeduction}}</td></tr>
-    <tr><td>Taxable income before the conversion</td><td class="num">{{rothExBefore}}</td></tr>
-    <tr><td>Top of the 22% bucket</td><td class="num">{{rothExTop}}</td></tr>
-    <tr class="highlight"><td><strong>Roth conversion</strong> (step 7): the room</td><td class="num"><strong>{{rothExConvert}}</strong></td></tr>
-    <tr><td>Income after the conversion</td><td class="num">{{rothExAfterIncome}}</td></tr>
-    <tr><td>Taxable income after the conversion (line 15)</td><td class="num">{{rothExTop}}</td></tr>
+    <tr><td>Total income (line 9)</td><td class="num">{{rothExIncome}}</td></tr>
+    <tr><td>Standard deduction (line 12e)</td><td class="num">-{{rothExDeduction}}</td></tr>
+    <tr><td>Taxable income (line 15)</td><td class="num">{{rothExBefore}}</td></tr>
+    <tr><td>Federal tax (line 16)</td><td class="num">{{rothExTaxBefore}}</td></tr>
+    <tr class="highlight"><td><strong>Room left</strong>: {{rothExTop}} top of the 22% bucket - {{rothExBefore}} taxable income</td><td class="num"><strong>{{rothExConvert}}</strong></td></tr>
   </tbody>
 </table></div>
-<p>The conversion adds {{rothExFedTax}} of federal tax (partly at 12%, mostly at 22%) and {{rothExStateTax}} of state
-tax at the 4% placeholder rate, paid in 2027. Converting last is what keeps the bucket exact: had the planner converted
-first, the {{rothExIraExpenses}} and {{rothExIraLastTax}} IRA withdrawals would have landed on top of a full bucket
-and been taxed at 24%.</p>
+<p><strong>2. After the conversion.</strong> Step 7 converts exactly the room. A conversion is one more IRA withdrawal
+on line 4a, so the same return becomes:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Pat's 2026 return after the conversion</th><th class="num">Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Pension (line 5a)</td><td class="num">{{rothExPension}}</td></tr>
+    <tr><td>IRA withdrawal for living expenses (step 5, line 4a)</td><td class="num">{{rothExIraExpenses}}</td></tr>
+    <tr><td>IRA withdrawal for last year's tax (step 6, line 4a)</td><td class="num">{{rothExIraLastTax}}</td></tr>
+    <tr class="highlight"><td><strong>IRA withdrawal for the Roth conversion</strong> (step 7, line 4a)</td><td class="num"><strong>{{rothExConvert}}</strong></td></tr>
+    <tr><td>Total income (line 9)</td><td class="num">{{rothExAfterIncome}}</td></tr>
+    <tr><td>Standard deduction (line 12e)</td><td class="num">-{{rothExDeduction}}</td></tr>
+    <tr><td>Taxable income (line 15) - exactly the top of the 22% bucket</td><td class="num">{{rothExTop}}</td></tr>
+    <tr><td>Federal tax (line 16), paid in 2027</td><td class="num">{{rothExTaxAfter}}</td></tr>
+  </tbody>
+</table></div>
+<p>The conversion added {{rothExFedTax}} of federal tax ({{rothExTaxAfter}} - {{rothExTaxBefore}}, partly at 12% and
+mostly at 22%) and {{rothExStateTax}} of state tax at the 4% placeholder rate. Both are paid in 2027. Converting last
+is what keeps the bucket exact: had the planner converted first, the {{rothExIraExpenses}} and
+{{rothExIraLastTax}} IRA withdrawals would have landed on top of a full bucket and been taxed at 24%.</p>
 
 <h2 id="smaller">Why the conversion can be smaller than the room</h2>
 <p>Usually each converted dollar adds one dollar of taxable income. Two rules can make it add more:</p>
@@ -113,11 +128,24 @@ and been taxed at 24%.</p>
 <p>The planner allows for both: it tries amounts until taxable income lands exactly on the bucket's top, so a bucket
 is never overfilled.</p>
 <p>Example: Lee is single, 70, with {{rothSsBenefit}} of Social Security and no other income, and fills the 22%
-bucket in 2026. Before converting, none of the benefits are taxable and the deductions are {{rothSsDeductions}}, so the
-room looks like {{rothSsRoom}}. Converting that much would make {{rothSsTaxableSS}} of the benefits taxable and shrink
-the senior deduction, for taxable income of {{rothSsOverfill}} - {{rothSsOverBy}} into the 24% bracket. The planner
-converts {{rothSsConvert}} instead: AGI is {{rothSsAgi}} (the conversion plus {{rothSsTaxableSS}} of taxable benefits),
-the senior deduction is down to {{rothSsSenior}}, and taxable income is exactly {{rothExTop}}.</p>
+bucket in 2026. Before converting, none of the benefits are taxable and the deductions are {{rothSsDeductions}}
+({{rothSsStd65}} standard deduction with the 65+ add-on, plus the $6,000 senior deduction). So the room looks like
+{{rothSsRoom}}: {{rothExTop}} + {{rothSsDeductions}}. Here is Lee's return both ways:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Lee's 2026 return</th><th class="num">Convert the full room</th><th class="num">What the planner converts</th></tr></thead>
+  <tbody>
+    <tr><td>IRA withdrawal for the Roth conversion (line 4a)</td><td class="num">{{rothSsRoom}}</td><td class="num">{{rothSsConvert}}</td></tr>
+    <tr><td>Taxable Social Security (line 6b)</td><td class="num">{{rothSsRoomTaxableSS}}</td><td class="num">{{rothSsTaxableSS}}</td></tr>
+    <tr><td>AGI (line 11a)</td><td class="num">{{rothSsRoomAgi}}</td><td class="num">{{rothSsAgi}}</td></tr>
+    <tr><td>Standard deduction with the 65+ add-on (line 12e)</td><td class="num">-{{rothSsStd65}}</td><td class="num">-{{rothSsStd65}}</td></tr>
+    <tr><td>Senior deduction after the phase-out (line 13b)</td><td class="num">-{{rothSsRoomSenior}}</td><td class="num">-{{rothSsSenior}}</td></tr>
+    <tr class="highlight"><td><strong>Taxable income (line 15)</strong></td><td class="num"><strong>{{rothSsOverfill}}</strong></td><td class="num"><strong>{{rothExTop}}</strong></td></tr>
+    <tr><td>Compared with the 22% bucket top of {{rothExTop}}</td><td class="num">{{rothSsOverBy}} over, taxed at 24%</td><td class="num">exactly at the top</td></tr>
+  </tbody>
+</table></div>
+<p>Converting the full room would make {{rothSsRoomTaxableSS}} of the benefits taxable and shrink the senior deduction,
+so taxable income rises by more than the amount converted. The planner converts {{rothSsConvert}} instead - the most
+that lands exactly on the top.</p>
 
 <h2 id="optimizer">Run Plan and the optimizer</h2>
 <p><strong>Run Plan</strong> does no conversions. The <a href="optimizer.html">optimizer</a> runs every combination

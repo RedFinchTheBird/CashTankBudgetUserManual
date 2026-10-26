@@ -581,24 +581,26 @@ function rothExamples(values) {
     rothExPension: money(pension), rothExIraExpenses: money(iraExpenses), rothExIraLastTax: money(iraLastTax),
     rothExIncome: money(income), rothExDeduction: money(ded.standard.single), rothExBefore: money(before),
     rothExTop: money(top22), rothExConvert: money(convert), rothExAfterIncome: money(income + convert),
+    rothExTaxBefore: money(tax(before)), rothExTaxAfter: money(tax(top22)),
     rothExFedTax: money(tax(top22) - tax(before)), rothExStateTax: money(convert * D.STATE_RATE / 100),
   });
 
   // 2. Age 70, Social Security only: converting also makes benefits taxable and phases
   // out the senior deduction, so the planner converts less than the room
-  const ss = 30000;
-  const deductionsAt = agi => ded.standard.single + ded.add65.single +
-    Math.max(0, ded.senior.amount - Math.max(0, agi - ded.senior.single) * ded.senior.phaseOutRate / 100);
-  const taxableAt = x => { const agi = x + taxableSS(ss, x, 'single'); return Math.max(0, agi - deductionsAt(agi)); };
-  const room = top22 + deductionsAt(0);
+  const ss = 30000, std65 = ded.standard.single + ded.add65.single;
+  const seniorAt = agi => Math.max(0, ded.senior.amount - Math.max(0, agi - ded.senior.single) * ded.senior.phaseOutRate / 100);
+  const agiAt = x => x + taxableSS(ss, x, 'single');
+  const taxableAt = x => Math.max(0, agiAt(x) - std65 - seniorAt(agiAt(x)));
+  const room = top22 + std65 + seniorAt(0);
   let lo = 0, hi = room;
   while (hi - lo > 0.001) { const mid = (lo + hi) / 2; if (taxableAt(mid) <= top22) lo = mid; else hi = mid; }
-  const agi = lo + taxableSS(ss, lo, 'single');
   Object.assign(values, {
-    rothSsBenefit: money(ss), rothSsDeductions: money(deductionsAt(0)), rothSsRoom: money(room),
-    rothSsConvert: money(lo), rothSsTaxableSS: money(taxableSS(ss, lo, 'single')),
-    rothSsSenior: money(deductionsAt(agi) - ded.standard.single - ded.add65.single), rothSsAgi: money(agi),
-    rothSsOverfill: money(taxableAt(room)), rothSsOverBy: money(taxableAt(room) - top22),
+    rothSsBenefit: money(ss), rothSsDeductions: money(std65 + seniorAt(0)), rothSsStd65: money(std65),
+    rothSsRoom: money(room), rothSsRoomTaxableSS: money(taxableSS(ss, room, 'single')), rothSsRoomAgi: money(agiAt(room)),
+    rothSsRoomSenior: money(seniorAt(agiAt(room))), rothSsOverfill: money(taxableAt(room)),
+    rothSsOverBy: money(taxableAt(room) - top22),
+    rothSsConvert: money(lo), rothSsTaxableSS: money(taxableSS(ss, lo, 'single')), rothSsAgi: money(agiAt(lo)),
+    rothSsSenior: money(seniorAt(agiAt(lo))),
   });
 }
 
