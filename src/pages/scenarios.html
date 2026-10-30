@@ -1,0 +1,59 @@
+<!--
+title: Scenarios and the best plan
+description: Run Plan runs every combination of retirement ages, Social Security claim ages, Roth buckets and markets. How the best scenario is chosen and how to compare scenarios.
+-->
+<h1>Scenarios and the best plan</h1>
+<p class="lead">Instead of guessing the best retirement age or when to claim Social Security, let the planner try them
+all. Every time you click <strong>Run Plan</strong>, the planner runs your plan once for every combination of your
+choices - each run is a <strong>scenario</strong> - in both a normal and a down market. You then choose which
+scenario's results to look at.</p>
+
+<h2 id="what-it-varies">What Run Plan tries</h2>
+<figure>
+  <img src="assets/img/charts/optimizer-combinations.svg" alt="Diagram: 3 x 3 x 3 x 3 x 3 x 2 = 486 scenarios with two tax payers" width="760" height="250">
+</figure>
+<ul>
+  <li><strong>Retirement ages</strong> - retirement ages 1, 2 and 3 of each tax payer, from the
+    <a href="tax-payers.html">Tax Payers</a> page.</li>
+  <li><strong>Social Security claim ages</strong> - claim ages 1, 2 and 3 of each tax payer.</li>
+  <li><strong>Roth conversions</strong> - none, or each of the <a href="roth-conversions.html">Roth buckets</a>
+    (the 22% and 24% brackets). Each bucket is filled every year until RMDs start, as the last step of the year; see
+    <a href="roth-conversions.html#rules">how the planner converts</a>.</li>
+  <li><strong>Market</strong> - <a href="asset-classes.html#down-market">normal and down and flat</a>.</li>
+</ul>
+<p>A repeated age counts once, so entering 65, 65, 65 tests only 65. Everything else in the plan stays the same.
+Milestone dates such as <code>YORTP1</code> move with each scenario's retirement and claim ages. Running every
+scenario takes a fraction of a second for a typical plan.</p>
+
+<h2 id="best">How the best scenario is chosen</h2>
+<ol>
+  <li>Only <strong>down-market</strong> scenarios are compared, because a plan that survives a bad market will survive
+    a normal one.</li>
+  <li>The scenario whose money lasts to the <strong>latest year</strong> wins.</li>
+  <li>If several last to the end of the plan, the one with the highest <strong>net asset value</strong> in the final
+    year wins.</li>
+</ol>
+<p>The best scenario is marked with a star in the scenario list, but the planner never picks for you: you always
+choose which scenario to view. See <a href="plan-results.html#choose-scenario">choosing a scenario</a>.</p>
+
+<div class="callout note">
+  <span class="title">Net asset value is in future dollars</span>
+  Final net asset value is in the dollars of the final year, not today's dollars. Compare scenarios with each other
+  rather than reading the number as today's purchasing power.
+</div>
+
+<h2 id="rerun">Run Plan again after a change</h2>
+<ul>
+  <li><strong>Run Plan</strong> replaces every scenario with a fresh set. After a run no scenario is selected, so the
+    next time you open Plan Results you choose one.</li>
+  <li>If you change the plan after a run - an age, an amount, an account - Plan Results says the results are
+    <strong>out of date</strong> until you click Run Plan again.</li>
+  <li>The scenario list and the results you looked at are saved with the project, so you can reopen it and carry on
+    without running the plan again.</li>
+</ul>
+
+<div class="callout tip">
+  <span class="title">Read more than the winner</span>
+  Look at how much the final net asset value changes between neighbouring choices. If claiming at 67 or 70 makes little
+  difference, other things (health, family, peace of mind) can decide.
+</div>

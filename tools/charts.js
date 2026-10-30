@@ -678,7 +678,7 @@ function yearCodes() {
 
 function optimizerCombos() {
   const W = 760, H = 250;
-  let b = header('How many scenarios the optimizer runs', 'Every combination of the distinct choices you entered (example with three of each)');
+  let b = header('How many scenarios Run Plan tries', 'Every combination of the distinct choices you entered (example with three of each)');
   const items = [['3', 'TP1 retirement', 'ages'], ['3', 'TP1 claim', 'ages'], ['3', 'TP2 retirement', 'ages'], ['3', 'TP2 claim', 'ages'], ['3', 'Roth: none,', '22%, 24%'], ['2', 'markets:', 'normal, down']];
   items.forEach(([v, a, c], i) => {
     const x = 14 + i * 116;
@@ -689,7 +689,7 @@ function optimizerCombos() {
   });
   b += T(W / 2, 186, '= 486 scenarios with two tax payers', { anchor: 'middle', size: 16, weight: 700, color: COLOR.blueDark });
   b += T(W / 2, 212, 'One tax payer: 3 x 3 x 3 x 2 = 54 scenarios. Repeated ages count once.', { anchor: 'middle', size: 12, color: COLOR.muted });
-  return svgDoc(W, H, 'Optimizer scenario count', b);
+  return svgDoc(W, H, 'Run Plan scenario count', b);
 }
 
 function moneyFlow() {

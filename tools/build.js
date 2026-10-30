@@ -29,12 +29,13 @@ const NAV = [
   {
     section: 'Screens', pages: [
       ['tax-payers', 'Tax Payers'], ['income-expenses', 'Income and expenses'], ['investments', 'Investments'],
-      ['optimizer', 'Optimizer'], ['plan-results', 'Plan results'], ['reference-tables', 'Reference tables and settings'],
+      ['plan-results', 'Plan results'], ['reference-tables', 'Reference tables and settings'],
     ],
   },
   {
     section: 'How planning works', pages: [
-      ['how-the-plan-works', 'How the plan works'], ['asset-classes', 'Asset classes: growth and yield'],
+      ['how-the-plan-works', 'How the plan works'], ['scenarios', 'Scenarios and the best plan'],
+      ['asset-classes', 'Asset classes: growth and yield'],
       ['taxes', 'Income taxes and deductions'], ['social-security', 'Social Security'],
       ['rmds', 'Required minimum distributions'], ['medicare-irmaa', 'Medicare and IRMAA'],
       ['roth-conversions', 'Roth conversions'], ['withdrawals', 'Withdrawals and Auto'],

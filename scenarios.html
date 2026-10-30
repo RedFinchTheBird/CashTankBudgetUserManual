@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Optimizer - CashTank Financial Planner</title>
-  <meta name="description" content="The optimizer runs every combination of retirement ages, Social Security claim ages, Roth buckets and market scenarios and picks the plan that lasts longest.">
+  <title>Scenarios and the best plan - CashTank Financial Planner</title>
+  <meta name="description" content="Run Plan runs every combination of retirement ages, Social Security claim ages, Roth buckets and markets. How the best scenario is chosen and how to compare scenarios.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -26,13 +26,13 @@
         <li><a href="tax-payers.html">Tax Payers</a></li>
         <li><a href="income-expenses.html">Income and expenses</a></li>
         <li><a href="investments.html">Investments</a></li>
-        <li><a href="optimizer.html" class="active" aria-current="page">Optimizer</a></li>
         <li><a href="plan-results.html">Plan results</a></li>
         <li><a href="reference-tables.html">Reference tables and settings</a></li>
       </ul>
       <div class="nav-section">How planning works</div>
       <ul>
         <li><a href="how-the-plan-works.html">How the plan works</a></li>
+        <li><a href="scenarios.html" class="active" aria-current="page">Scenarios and the best plan</a></li>
         <li><a href="asset-classes.html">Asset classes: growth and yield</a></li>
         <li><a href="taxes.html">Income taxes and deductions</a></li>
         <li><a href="social-security.html">Social Security</a></li>
@@ -48,21 +48,13 @@
       </ul>
     </nav>
     <main class="content" id="content">
-<h1>Optimizer <span class="badge preview">Preview</span></h1>
+<h1>Scenarios and the best plan</h1>
 <p class="lead">Instead of guessing the best retirement age or when to claim Social Security, let the planner try them
-all. The optimizer runs your plan once for every combination of your choices, in both a normal and a down market.</p>
+all. Every time you click <strong>Run Plan</strong>, the planner runs your plan once for every combination of your
+choices - each run is a <strong>scenario</strong> - in both a normal and a down market. You then choose which
+scenario's results to look at.</p>
 
-<div class="callout preview">
-  <span class="title">Screen in progress</span>
-  The picture is a mockup. The optimizer calculation is finished.
-</div>
-
-<figure>
-  <img src="assets/img/screens/ui-optimizer.svg" alt="Mockup of the Optimizer page: the scenario choices, the Roth buckets table and the Run Optimizer button" width="960" height="540">
-  <figcaption>Mockup: the optimizer settings and the Roth buckets.</figcaption>
-</figure>
-
-<h2 id="what-it-varies">What it varies</h2>
+<h2 id="what-it-varies">What Run Plan tries</h2>
 <figure>
   <img src="assets/img/charts/optimizer-combinations.svg" alt="Diagram: 3 x 3 x 3 x 3 x 3 x 2 = 486 scenarios with two tax payers" width="760" height="250">
 </figure>
@@ -76,18 +68,19 @@ all. The optimizer runs your plan once for every combination of your choices, in
   <li><strong>Market</strong> - <a href="asset-classes.html#down-market">normal and down and flat</a>.</li>
 </ul>
 <p>A repeated age counts once, so entering 65, 65, 65 tests only 65. Everything else in the plan stays the same.
-Milestone dates such as <code>YORTP1</code> move with each scenario's retirement and claim ages.</p>
+Milestone dates such as <code>YORTP1</code> move with each scenario's retirement and claim ages. Running every
+scenario takes a fraction of a second for a typical plan.</p>
 
 <h2 id="best">How the best scenario is chosen</h2>
 <ol>
-  <li>Only <strong>down-market</strong> runs are compared, because a plan that survives a bad market will survive a
-    normal one.</li>
-  <li>The run whose money lasts to the <strong>latest year</strong> wins.</li>
-  <li>If several last to the end of the plan, the one with the highest <strong>net asset value</strong> in the final year
-    wins.</li>
+  <li>Only <strong>down-market</strong> scenarios are compared, because a plan that survives a bad market will survive
+    a normal one.</li>
+  <li>The scenario whose money lasts to the <strong>latest year</strong> wins.</li>
+  <li>If several last to the end of the plan, the one with the highest <strong>net asset value</strong> in the final
+    year wins.</li>
 </ol>
-<p>The best scenario gets full year-by-year results (cash flows, balances, tax forms). Every other scenario gets one
-summary row; you can calculate the full results of any of them when you want to look closer.</p>
+<p>The best scenario is marked with a star in the scenario list, but the planner never picks for you: you always
+choose which scenario to view. See <a href="plan-results.html#choose-scenario">choosing a scenario</a>.</p>
 
 <div class="callout note">
   <span class="title">Net asset value is in future dollars</span>
@@ -95,20 +88,15 @@ summary row; you can calculate the full results of any of them when you want to 
   rather than reading the number as today's purchasing power.
 </div>
 
-<h2 id="results">Reading the optimizer results</h2>
-<p>The results are on <a href="plan-results.html#optimizer">Plan Results &gt; Optimizer</a>, one row per scenario:</p>
-<div class="table-wrap"><table>
-  <thead><tr><th>Column</th><th>Meaning</th></tr></thead>
-  <tbody>
-    <tr><td>Scenario</td><td>Scenario number (1, 2, 3...).</td></tr>
-    <tr><td>SS claim age / retirement age (each tax payer)</td><td>The ages used in this scenario.</td></tr>
-    <tr><td>Roth fill bucket</td><td>The bucket filled each year, or blank for no Roth conversions.</td></tr>
-    <tr><td>Market</td><td>Normal Market or Down and Flat Market.</td></tr>
-    <tr><td>End of plan year</td><td>The last year of the plan: the final life expectancy year, or the year the money ran out.</td></tr>
-    <tr><td>NAV</td><td>Net asset value (all accounts) at the end of that year.</td></tr>
-  </tbody>
-</table></div>
-<p>Running the optimizer again replaces the earlier optimizer results. The results of <strong>Run Plan</strong> are kept.</p>
+<h2 id="rerun">Run Plan again after a change</h2>
+<ul>
+  <li><strong>Run Plan</strong> replaces every scenario with a fresh set. After a run no scenario is selected, so the
+    next time you open Plan Results you choose one.</li>
+  <li>If you change the plan after a run - an age, an amount, an account - Plan Results says the results are
+    <strong>out of date</strong> until you click Run Plan again.</li>
+  <li>The scenario list and the results you looked at are saved with the project, so you can reopen it and carry on
+    without running the plan again.</li>
+</ul>
 
 <div class="callout tip">
   <span class="title">Read more than the winner</span>
@@ -117,8 +105,8 @@ summary row; you can calculate the full results of any of them when you want to 
 </div>
 
     <nav class="pager" aria-label="Previous and next pages">
-      <a class="prev" href="investments.html"><span>Previous</span>Investments</a>
-      <a class="next" href="plan-results.html"><span>Next</span>Plan results</a>
+      <a class="prev" href="how-the-plan-works.html"><span>Previous</span>How the plan works</a>
+      <a class="next" href="asset-classes.html"><span>Next</span>Asset classes: growth and yield</a>
     </nav>
     </main>
   </div>

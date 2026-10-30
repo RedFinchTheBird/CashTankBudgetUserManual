@@ -12,7 +12,7 @@ const NAV_BG = '#fefbea';
 const ACTIVE = '#2563eb';
 const HEADER_GRAY = '#808080';
 
-const PLAN_ITEMS = ['Tax Payers', 'Income, Expenses', 'Investments', 'Optimizer', 'Plan Results'];
+const PLAN_ITEMS = ['Tax Payers', 'Income, Expenses', 'Investments', 'Plan Results'];
 const OTHER_ITEMS = ['Income Brackets', 'Medicare Brackets', 'RMD Table', 'Asset Classes', 'General Settings'];
 
 function fit(s, width, size = 11) {
@@ -74,7 +74,8 @@ function panelHeader(x, y, w, title) {
   return R(x, y, w, 26, HEADER_GRAY) + T(x + 10, y + 17, title, { size: 12, color: '#ffffff' });
 }
 
-// Grid: cols [[title, width, align]], rows of cell text; o.selected = highlighted row
+// Grid: cols [[title, width, align]], rows of cell text; o.selected = highlighted row,
+// o.rowStyles = { rowIndex: { fill, color, weight } } for marked rows
 function grid(x, y, cols, rows, o = {}) {
   const rowH = o.rowH || 24, w = cols.reduce((s, c) => s + c[1], 0);
   let b = R(x, y, w, rowH * (rows.length + 1) + (o.extraRows || 0) * rowH, '#ffffff', { stroke: COLOR.border });
@@ -87,14 +88,16 @@ function grid(x, y, cols, rows, o = {}) {
   });
   rows.forEach((r, ri) => {
     const ry = y + rowH * (ri + 1);
+    const style = (o.rowStyles || {})[ri] || {};
     if (ri === o.selected) b += R(x + 1, ry, w - 2, rowH, '#dbeafe');
+    else if (style.fill) b += R(x + 1, ry, w - 2, rowH, style.fill);
     b += L(x, ry + rowH, x + w, ry + rowH, '#eef2f7');
     let rx = x;
     r.forEach((cell, ci) => {
       const [, cw, align] = cols[ci];
       const picker = typeof cell === 'object' && cell !== null;
       const text = picker ? cell.text : cell;
-      b += T(align === 'right' ? rx + cw - 6 : rx + 6, ry + 16, fit(text, picker ? cw - 18 : cw, 11), { anchor: align === 'right' ? 'end' : 'start', size: 11, color: COLOR.text });
+      b += T(align === 'right' ? rx + cw - 6 : rx + 6, ry + 16, fit(text, picker ? cw - 18 : cw, 11), { anchor: align === 'right' ? 'end' : 'start', size: 11, color: style.color || COLOR.text, weight: style.weight });
       if (picker) b += R(rx + cw - 18, ry + 5, 13, 14, '#ffffff', { stroke: COLOR.slate, rx: 2 }) + T(rx + cw - 11.5, ry + 15, '...', { anchor: 'middle', size: 9 });
       rx += cw;
     });
@@ -163,33 +166,78 @@ function investments() {
   });
 }
 
-function optimizer() {
-  return frame('Optimizer', 'Optimizer', 540, c => {
-    let b = panelHeader(c.x, c.y, c.w, 'Scenarios the optimizer will try');
-    b += R(c.x, c.y + 26, c.w, 128, '#ffffff');
-    b += TL(c.x + 14, c.y + 50, [
-      'Retirement ages 1-3 and Social Security claim ages 1-3 of each tax payer (from the Tax Payers page)',
-      'Roth conversions: none, or fill each Roth bucket below every year until RMDs start',
-      'Markets: Normal (long-run averages) and Down and flat (asset class history from the worst start year)',
-    ], { size: 11.5, lineHeight: 20 });
-    b += T(c.x + 14, c.y + 130, 'Two tax payers with three choices each: 3 x 3 x 3 x 3 x 3 x 2 = 486 scenarios', { size: 12, weight: 700, color: COLOR.blueDark });
-    b += panelHeader(c.x, c.y + 168, 340, 'Roth buckets');
-    b += grid(c.x, c.y + 194, [['Bucket', 90], ['Bracket rate', 110, 'right'], ['Fill up to', 140, 'right']], [
-      ['22%', '22%', '$211,400'], ['24%', '24%', '$403,550']]);
-    b += T(c.x, c.y + 312, 'Married amounts; they follow filing status and inflation.', { size: 10.5, color: COLOR.muted });
-    b += panelHeader(c.x + 360, c.y + 168, c.w - 360, 'Run');
-    b += R(c.x + 360, c.y + 194, c.w - 360, 120, '#ffffff');
-    b += button(c.x + 376, c.y + 210, 160, 'Run Optimizer', { primary: true });
-    b += TL(c.x + 376, c.y + 260, ['Best scenario: the down-market run that lasts', 'the longest, then ends with the most money.', 'Results: Plan Results > Optimizer.'], { size: 11, color: COLOR.text, lineHeight: 15 });
-    return b;
+// Scenario banner shown at the top of Plan Results, with the Change Scenario button
+const SCENARIO_LINES = [
+  'Scenario #486  -  Down and Flat market  -  lasts through 2062 with $7,651,288',
+  'Alex retires 67, claims 70  -  Jordan retires 65, claims 70  -  Roth 24% bucket',
+];
+
+// Choose a Plan Scenario dialog (opened from Plan Results), filtered to the down market
+function scenarioDialog() {
+  const DW = 960, DH = 520;
+  let b = R(0, 0, DW, DH, '#ffffff', { stroke: COLOR.border });
+  b += R(0, 0, DW, 34, '#f3f4f6', { stroke: COLOR.border });
+  b += T(16, 22, 'Choose a Plan Scenario', { size: 13, weight: 600 });
+  b += T(DW - 22, 22, 'X', { anchor: 'middle', size: 12, color: COLOR.muted });
+  b += R(DW - 254, 44, 200, 22, '#fff7ed', { stroke: COLOR.orange, rx: 11 });
+  b += T(DW - 154, 59, 'Preview - screen in progress', { anchor: 'middle', size: 11, weight: 600, color: '#b45309' });
+  b += T(20, 60, 'Run Plan tried 486 scenarios. Choose the one whose year-by-year results you want to see.', { size: 12.5 });
+
+  // Best scenario summary, with a link that selects it
+  b += R(20, 76, DW - 40, 32, '#f0fdf4', { stroke: COLOR.greenDark, rx: 6 });
+  b += T(34, 97, '\u2605 Best: #482  -  Alex retires 67, claims 70; Jordan retires 65, claims 70; no Roth; lasts through 2062 with $7,878,852', { size: 11.5, color: COLOR.greenDark, weight: 600 });
+  b += T(DW - 34, 97, 'Select it', { anchor: 'end', size: 11.5, weight: 600, color: ACTIVE });
+  b += L(DW - 82, 100, DW - 34, 100, ACTIVE);
+
+  // Market filter and legend
+  b += T(20, 136, 'Market:', { size: 12, weight: 600 });
+  [['All', false, 76], ['Normal', false, 132], ['Down and Flat', true, 210]].forEach(([label, on, x]) => {
+    b += C(x, 132, 6, '#ffffff', { stroke: COLOR.slate, strokeWidth: 1.2 });
+    if (on) b += C(x, 132, 3, ACTIVE);
+    b += T(x + 11, 136, label, { size: 12 });
   });
+  b += R(450, 125, 14, 14, '#dcfce7', { stroke: COLOR.greenDark });
+  b += T(470, 136, '\u2605 Best scenario', { size: 11.5 });
+  b += T(580, 136, 'Red = money runs out before the end', { size: 11.5, color: '#b91c1c' });
+  b += T(DW - 20, 136, '243 of 486 scenarios', { anchor: 'end', size: 11.5, color: COLOR.muted });
+
+  // Scenario grid: sorted by Alex retires, Plan ends, NAV at end (all descending); nothing selected
+  const cols = [['', 24], ['Scenario', 66, 'right'], ['Alex retires \u25BC', 100, 'right'], ['Alex claims', 92, 'right'],
+    ['Jordan retires', 104, 'right'], ['Jordan claims', 104, 'right'], ['Roth', 74], ['Market', 124],
+    ['Plan ends \u25BC', 90, 'right'], ['NAV at end \u25BC', 142, 'right']];
+  const rows = [
+    ['\u2605', '482', '67', '70', '65', '70', 'None', 'Down and Flat', '2062', '$7,878,852'],
+    ['', '484', '67', '70', '65', '70', '22%', 'Down and Flat', '2062', '$7,764,310'],
+    ['', '476', '67', '70', '65', '67', 'None', 'Down and Flat', '2062', '$7,702,945'],
+    ['', '486', '67', '70', '65', '70', '24%', 'Down and Flat', '2062', '$7,651,288'],
+    ['', '478', '67', '70', '65', '67', '22%', 'Down and Flat', '2062', '$7,590,137'],
+    ['', '464', '67', '70', '63', '70', 'None', 'Down and Flat', '2062', '$7,433,906'],
+    ['', '428', '67', '67', '65', '70', 'None', 'Down and Flat', '2062', '$7,302,571'],
+    ['', '...', '', '', '', '', '', '', '', ''],
+    ['', '4', '62', '62', '60', '62', '22%', 'Down and Flat', '2050', '$0'],
+    ['', '6', '62', '62', '60', '62', '24%', 'Down and Flat', '2049', '$0'],
+  ];
+  b += grid(20, 152, cols, rows, { rowStyles: { 0: { fill: '#dcfce7', weight: 600 }, 8: { color: '#b91c1c' }, 9: { color: '#b91c1c' } } });
+
+  // Footer: hint and buttons (View Results stays disabled until a row is clicked)
+  b += T(20, 450, 'Click a row, then View Results - or double-click the row. Click a column heading to sort by it.', { size: 11.5, color: COLOR.muted });
+  b += R(DW - 258, 472, 130, 30, '#e5e7eb', { stroke: '#d1d5db', rx: 4 });
+  b += T(DW - 193, 491, 'View Results', { anchor: 'middle', size: 12, weight: 600, color: '#9ca3af' });
+  b += R(DW - 118, 472, 98, 30, '#ffffff', { stroke: COLOR.border, rx: 4 });
+  b += T(DW - 69, 491, 'Cancel', { anchor: 'middle', size: 12 });
+  return svgDoc(DW, DH, 'Choose a Plan Scenario dialog (preview)', b);
 }
 
 function planResultsGrid() {
-  return frame('Plan Results', 'Plan Results', 470, c => {
-    let b = list(c.x, c.y, 200, ['Annual Cash Flows', 'Annual Account Balances', 'Annual Income, Expense Table', 'Annual Income, Expense Graph', 'Annual Net Asset Value Graph', 'Annual Tax Forms', 'Optimizer'], 0, { h: c.h - 10 });
+  return frame('Plan Results', 'Plan Results', 540, c => {
+    let b = R(c.x, c.y, c.w, 52, '#eff6ff', { stroke: ACTIVE, rx: 6 });
+    b += T(c.x + 12, c.y + 21, SCENARIO_LINES[0], { size: 11.5, weight: 700, color: COLOR.blueDark });
+    b += T(c.x + 12, c.y + 40, SCENARIO_LINES[1], { size: 11.5 });
+    b += button(c.x + c.w - 146, c.y + 13, 134, 'Change Scenario...', { primary: true });
+    const ly = c.y + 66;
+    b += list(c.x, ly, 200, ['Annual Cash Flows', 'Annual Account Balances', 'Annual Income, Expense Table', 'Annual Income, Expense Graph', 'Annual Net Asset Value Graph', 'Annual Tax Forms'], 0, { h: c.h - 76 });
     const gx = c.x + 214;
-    b += grid(gx, c.y, [['Year', 40], ['Alex', 34, 'right'], ['Jordan', 42, 'right'], ['Description', 112], ['From', 74], ['To', 86], ['Amount', 62, 'right'], ['1040', 28]], [
+    b += grid(gx, ly, [['Year', 40], ['Alex', 34, 'right'], ['Jordan', 42, 'right'], ['Description', 112], ['From', 74], ['To', 86], ['Amount', 62, 'right'], ['1040', 28]], [
       ['2027', '63', '60', 'Jordan salary', 'Jordan', 'Joint Savings', '$87,550', '1a'],
       ['2027', '63', '60', 'Social Security', 'Alex', 'Joint Savings', '$22,063', '6a'],
       ['2027', '63', '60', 'Groceries', 'Joint Savings', 'Living Expenses', '$12,360', ''],
@@ -198,7 +246,7 @@ function planResultsGrid() {
       ['2027', '63', '60', 'Roth Conversion', 'Alex IRA', 'Alex Roth', '$40,210', '4a'],
       ['2028', '64', '61', 'Jordan salary', 'Jordan', 'Joint Savings', '$90,177', '1a'],
     ], { extraRows: 4 });
-    b += callout(gx, c.y + 300, 478, ['Each row is one movement of money in one plan year. Filter by year, description,', 'From or To; the Annual Tax Forms view shows the 1040 and Social Security worksheet.']);
+    b += callout(gx, ly + 300, 478, ['Every view shows the scenario in the banner above. Change Scenario... opens the', 'scenario list again; the views switch to the scenario you choose.']);
     return b;
   });
 }
@@ -248,7 +296,7 @@ function buildWireframes() {
   const files = {};
   files['ui-income-expenses.svg'] = incomeExpenses();
   files['ui-investments.svg'] = investments();
-  files['ui-optimizer.svg'] = optimizer();
+  files['ui-scenario-dialog.svg'] = scenarioDialog();
   files['ui-plan-results.svg'] = planResultsGrid();
   files['ui-income-brackets.svg'] = referenceTable('Income Brackets', 'Income Brackets',
     [['Type', 110], ['Filing status', 170], ['Lower', 110, 'right'], ['Upper', 110, 'right'], ['Rate', 80, 'right']],

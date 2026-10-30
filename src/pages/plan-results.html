@@ -1,20 +1,60 @@
 <!--
 title: Plan results
-description: Read the yearly cash flows, account balances, income and expenses, net asset value, tax forms and optimizer results.
+description: Choose a scenario, then read its yearly cash flows, account balances, income and expenses, net asset value and tax forms.
 -->
 <h1>Plan results <span class="badge preview">Preview</span></h1>
-<p class="lead">After <strong>Run Plan</strong>, Plan Results shows every year of the projection from several angles.
-Choose a view on the left.</p>
+<p class="lead"><strong>Run Plan</strong> calculates every <a href="scenarios.html">scenario</a>. On Plan Results you
+choose one scenario and read every year of it from several angles.</p>
 
-<figure class="screenshot">
-  <img src="assets/img/screens/screen-plan-results-shell.png" alt="The Plan Results page with its list of result views" width="1380" height="820">
-  <figcaption>The Plan Results page and its seven views. The grids and graphs inside are in progress.</figcaption>
-</figure>
-
+<h2 id="choose-scenario">Choose a scenario</h2>
 <figure>
-  <img src="assets/img/screens/ui-plan-results.svg" alt="Mockup of the Annual Cash Flows grid with year, ages, description, from, to, amount and 1040 box" width="960" height="470">
-  <figcaption>Mockup: Annual Cash Flows. Each row is one movement of money.</figcaption>
+  <img src="assets/img/screens/ui-scenario-dialog.svg" alt="Mockup of the Choose a Plan Scenario dialog: a summary of the best scenario, a market filter and a list of scenarios with the best one starred" width="960" height="520">
+  <figcaption>Mockup: the Choose a Plan Scenario dialog, filtered to the down and flat market. The star marks the best
+    scenario; nothing is selected until you click a row.</figcaption>
 </figure>
+<p>The first time you click <strong>Plan Results</strong> after Run Plan, the <strong>Choose a Plan Scenario</strong>
+dialog lists every scenario Run Plan tried. No scenario is selected for you - you decide which one to look at.</p>
+<ul>
+  <li><strong>Pick one.</strong> Click a row, then <strong>View Results</strong>, or double-click the row.</li>
+  <li><strong>The best scenario</strong> is starred, shown in green, and summarized above the list. Its
+    <strong>Select it</strong> link selects it in the list. See <a href="scenarios.html#best">how the best scenario is
+    chosen</a>.</li>
+  <li><strong>Red rows</strong> are scenarios where the money runs out before the end of the plan; <em>Plan ends</em>
+    is the year it ran out.</li>
+  <li><strong>Market</strong> shows all scenarios, or only the normal or only the down and flat market ones. It starts
+    at <em>All</em>.</li>
+  <li><strong>Sorting.</strong> The list starts sorted by tax payer 1's retirement age, then <em>Plan ends</em>, then
+    <em>NAV at end</em>, all highest first. Click a column heading to sort by it.</li>
+  <li><strong>Cancel</strong> leaves Plan Results without a scenario; its <strong>Choose Scenario...</strong> button
+    opens the list again.</li>
+</ul>
+<div class="table-wrap"><table>
+  <thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Scenario</td><td>The scenario number (1, 2, 3...).</td></tr>
+    <tr><td><em>Name</em> retires / <em>Name</em> claims</td><td>Each tax payer's retirement age and Social Security claim age in this scenario. With one tax payer the second pair is hidden.</td></tr>
+    <tr><td>Roth</td><td>The <a href="roth-conversions.html#buckets">Roth bucket</a> filled each year, or None.</td></tr>
+    <tr><td>Market</td><td>Normal or Down and Flat.</td></tr>
+    <tr><td>Plan ends</td><td>The last year of the plan: the final life expectancy year, or the year the money ran out.</td></tr>
+    <tr><td>NAV at end</td><td>Net asset value (all accounts) at the end of that year, in that year's dollars.</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="change-scenario">Change the scenario</h2>
+<figure>
+  <img src="assets/img/screens/ui-plan-results.svg" alt="Mockup of Plan Results: a banner naming the chosen scenario with a Change Scenario button, the list of result views and the Annual Cash Flows grid" width="960" height="540">
+  <figcaption>Mockup: Plan Results for the chosen scenario. The banner names it; Change Scenario... picks another.</figcaption>
+</figure>
+<ul>
+  <li>The <strong>banner</strong> at the top of Plan Results names the scenario every view shows: its number, market,
+    how long the money lasts, and each tax payer's ages and Roth bucket.</li>
+  <li><strong>Change Scenario...</strong> opens the scenario list again with your current scenario selected. Choose
+    another and every view switches to it.</li>
+  <li>Once you have chosen, clicking Plan Results goes straight to that scenario.</li>
+  <li>After the next <strong>Run Plan</strong>, no scenario is selected, so Plan Results opens the list again.</li>
+  <li>If you change the plan after Run Plan, the banner says the results are <strong>out of date</strong>. Click Run
+    Plan to recalculate them.</li>
+</ul>
 
 <h2 id="cash-flows">Annual Cash Flows</h2>
 <p>Every movement of money in every year: wages and pensions into accounts, Social Security and RMDs into the cash
@@ -74,6 +114,3 @@ federal tax on line 16 is paid the next year.</p>
     <tr class="highlight"><td>11a.1</td><td>MAGI for Medicare IRMAA: line 11a + line 2a. See <a href="medicare-irmaa.html#magi">MAGI</a>.</td></tr>
   </tbody>
 </table></div>
-
-<h2 id="optimizer">Optimizer</h2>
-<p>One row per optimizer scenario. See <a href="optimizer.html#results">reading the optimizer results</a>.</p>
