@@ -116,7 +116,7 @@ const RMD = {
 };
 
 const PLAN_DEFAULTS = {
-  ssAdjustment: 85, medicareInflation: 5, taxInflation: 3, generalInflation: 3,
+  ssAdjustment: 85, medicareInflation: 5, taxInflation: 3, generalInflation: 3, ssColaRate: 2.5,
   taxPayerAge: 60, lifeExpectancy: 90, retirementAges: [62, 65, 67], claimAges: [62, 67, 70],
 };
 

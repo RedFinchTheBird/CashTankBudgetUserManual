@@ -281,13 +281,14 @@ function assetClasses() {
 function generalSettings() {
   return frame('General Settings', 'General Settings', 470, c => {
     let b = panelHeader(c.x, c.y, c.w, 'Plan settings');
-    b += R(c.x, c.y + 26, c.w, 280, '#ffffff');
+    b += R(c.x, c.y + 26, c.w, 320, '#ffffff');
     b += field(c.x + 16, c.y + 52, 300, 'PLAN NAME', 'New Financial Plan', { left: true });
     b += field(c.x + 16, c.y + 112, 200, 'SOCIAL SECURITY ADJUSTMENT FACTOR', '85.00%');
-    b += field(c.x + 256, c.y + 112, 200, 'GENERAL INFLATION RATE', '3.00%');
-    b += field(c.x + 16, c.y + 172, 200, 'TAX FORMS INFLATION RATE', '3.00%');
-    b += field(c.x + 256, c.y + 172, 200, 'MEDICARE PREMIUM INFLATION RATE', '5.00%');
-    b += TL(c.x + 16, c.y + 240, ['SS adjustment factor: the share of your Social Security benefit you expect to be paid (85% = a 15% cut).', 'Tax forms inflation moves brackets, deductions and IRMAA thresholds each year.'], { size: 11, color: COLOR.muted, lineHeight: 16 });
+    b += field(c.x + 256, c.y + 112, 200, 'SOCIAL SECURITY COLA RATE', '2.50%');
+    b += field(c.x + 16, c.y + 172, 200, 'GENERAL INFLATION RATE', '3.00%');
+    b += field(c.x + 256, c.y + 172, 200, 'TAX FORMS INFLATION RATE', '3.00%');
+    b += field(c.x + 16, c.y + 232, 200, 'MEDICARE PREMIUM INFLATION RATE', '5.00%');
+    b += TL(c.x + 16, c.y + 292, ['SS adjustment factor: the share of your Social Security benefit you expect to be paid (85% = a 15% cut).', 'COLA rate: the yearly raise of Social Security. General inflation is the default rate of new income and expense rows.', 'Tax forms inflation moves brackets, deductions and IRMAA thresholds each year.'], { size: 11, color: COLOR.muted, lineHeight: 16 });
     return b;
   });
 }

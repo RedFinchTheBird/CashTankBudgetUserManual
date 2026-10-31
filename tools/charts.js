@@ -156,6 +156,10 @@ function bondsPriceVsTotal(values) {
   b += T(p.x + p.w + 8, sy(price[PERIOD]) + 4, `Growth only ${moneyK(price[PERIOD])}`, { size: 11.5, color: COLOR.blueDark, weight: 600 });
   values.bondsPriceOnly = money(price[PERIOD]);
   values.bondsTotal = money(total[PERIOD]);
+  const low = c.yield.reduce((m, v, i) => (v < c.yield[m] ? i : m), 0);
+  values.bondsYieldFirst = `${c.yield[0].toFixed(2)}%`;
+  values.bondsYieldLow = `${c.yield[low].toFixed(2)}%`;
+  values.bondsYieldLowYear = String(FIRST_YEAR + low);
   return svgDoc(W, H, 'Bond growth only versus growth plus yield', b);
 }
 
@@ -305,7 +309,7 @@ function deductionsByAge() {
   ];
   const tk = niceTicks(0, Math.max(...scenarios.map(s => sum(s.parts))), 5);
   const sy = scale(tk.lo, tk.hi, p.y + p.h, p.y);
-  const colors = [COLOR.blueMid, COLOR.teal, COLOR.green];
+  const colors = [COLOR.blueMid, COLOR.purple, COLOR.green];
   const band = p.w / scenarios.length, bw = 92;
   let b = header('2026 deductions by age and filing status', 'Standard deduction + age 65 add-on + senior deduction (2025-2028, before its phase-out)');
   b += gridY(p, tk, moneyK, sy);
@@ -316,6 +320,7 @@ function deductionsByAge() {
       if (!v) return;
       b += R(x, sy(base + v), bw, sy(base) - sy(base + v), colors[k], { stroke: '#fff' });
       if (sy(base) - sy(base + v) > 16) b += T(x + bw / 2, (sy(base) + sy(base + v)) / 2 + 4, moneyK(v), { anchor: 'middle', size: 11, color: '#fff', weight: 600 });
+      else b += T(x + bw + 5, (sy(base) + sy(base + v)) / 2 + 4, money(v), { size: 11, color: colors[k], weight: 700 });
       base += v;
     });
     b += T(x + bw / 2, sy(base) - 8, money(base), { anchor: 'middle', size: 12, weight: 700 });
@@ -611,7 +616,7 @@ function autoOrder() {
   const W = 760, H = 250;
   let b = header('Auto withdrawal order', 'When an expense, tax or Medicare bill is paid by Auto, accounts are used in this order');
   const items = [
-    ['1. Savings', ['interest taxed', 'as it is earned']], ['2. Brokerage', ['gains on sales', '(1040 line 7a)']],
+    ['1. Savings', ['and Checking: interest', 'taxed as it is earned']], ['2. Brokerage', ['gains on sales', '(1040 line 7a)']],
     ['3. IRA', ['ordinary income', '(1040 line 4a)']], ['4. 401(k)', ['ordinary income', '(1040 line 5a)']], ['5. Roth', ['tax free']],
   ];
   items.forEach(([t, s], i) => {
@@ -620,31 +625,32 @@ function autoOrder() {
     if (i < items.length - 1) b += L(x + 128, 107, x + 147, 107, COLOR.slate, 1.6, { arrow: true });
   });
   b += TL(16, 178, [
-    'Within a type, every account and investment pays in proportion to its balance; investments that lost value this year are used last.',
-    'Checking, HSA and 529 accounts are not used by Auto. If Auto cannot cover the bill, the plan ends that year.',
+    'Within a step, every account and investment pays in proportion to its balance; investments that lost value this year are used last.',
+    'Savings and Checking are one step. HSA and 529 are not used by Auto. If Auto cannot cover a bill, the plan ends that year.',
   ], { size: 11.5, color: COLOR.text, lineHeight: 18 });
   return svgDoc(W, H, 'Auto withdrawal order', b);
 }
 
 function yearlySteps() {
-  const W = 760, H = 300;
+  const W = 760, H = 380;
   let b = header('What the planner does each year', 'Plan year 1 is the current year; the steps repeat until the last life expectancy year');
   const steps = [
     ['1 Market', ['growth + yield on', 'each investment']], ['2 Income', ['wages and pensions', 'into their accounts']],
     ['3 Social Security', ['benefits into the', 'cash account']], ['4 RMDs', ['IRA / 401(k) minimum', 'into the cash account']],
     ['5 Expenses', ['from an account', 'or Auto']], ['6 Taxes + Medicare', ["last year's taxes,", "this year's IRMAA"]],
-    ['7 Roth conversions', ['fill the chosen', 'bracket, last']], ['Close the year', ["this year's tax (paid", 'next year), NAV, forms']],
+    ['7 Reinvest surplus', ["savings' gain for", 'the year to brokerage']], ['8 Roth conversions', ['fill the chosen', 'bracket, last']],
+    ['Close the year', ["this year's tax (paid", 'next year), NAV, forms']],
   ];
   steps.forEach(([t, s], i) => {
     const row = Math.floor(i / 4), col = i % 4;
-    const x = row === 0 ? 16 + col * 186 : 16 + (3 - col) * 186, y = 66 + row * 110;
-    b += box(x, y, 164, 76, t, s, { fill: i === 7 ? COLOR.greenLight : COLOR.blueFaint, titleTop: 24 });
+    const x = row === 1 ? 16 + (3 - col) * 186 : 16 + col * 186, y = 66 + row * 110;
+    b += box(x, y, 164, 76, t, s, { fill: i === 8 ? COLOR.greenLight : COLOR.blueFaint, titleTop: 24 });
     if (i < 3) b += L(x + 166, y + 38, x + 184, y + 38, COLOR.slate, 1.6, { arrow: true });
-    if (i === 3) b += L(x + 82, y + 78, x + 82, y + 108, COLOR.slate, 1.6, { arrow: true });
+    if (i === 3 || i === 7) b += L(x + 82, y + 78, x + 82, y + 108, COLOR.slate, 1.6, { arrow: true });
     if (i > 3 && i < 7) b += L(x - 2, y + 38, x - 20, y + 38, COLOR.slate, 1.6, { arrow: true });
   });
-  b += P('M16,214 C0,214 0,104 14,104', COLOR.slate, 1.4, { dash: '4 3', arrow: true });
-  b += T(16, 290, 'Next year: amounts inflate, ages advance. The plan stops early if Auto cannot pay a bill.', { size: 11.5, color: COLOR.muted });
+  b += P('M16,324 C0,324 0,104 14,104', COLOR.slate, 1.4, { dash: '4 3', arrow: true });
+  b += TL(204, 318, ['Next year: amounts inflate, ages advance and the steps repeat.', 'The plan stops early if Auto cannot pay a bill.'], { size: 11.5, color: COLOR.muted, lineHeight: 18 });
   return svgDoc(W, H, 'Yearly steps', b);
 }
 
@@ -699,8 +705,8 @@ function moneyFlow() {
   left.forEach(([t, s], i) => { b += box(16, 66 + i * 70, 160, 54, t, [s], { fill: COLOR.greenLight, titleTop: 22 }); });
   b += R(286, 66, 190, 264, COLOR.blueFaint, { stroke: COLOR.border, rx: 10 });
   b += T(381, 90, 'Accounts', { anchor: 'middle', size: 14, weight: 700 });
-  b += TL(381, 112, ['Savings, Checking, Brokerage', 'IRA, 401(k), Roth, HSA, 529', '', 'each holds investments that', 'grow and pay yield every year', '', 'Roth conversions move money', 'IRA / 401(k) -> Roth'], { anchor: 'middle', size: 11.5, color: COLOR.text, lineHeight: 16 });
-  b += TL(381, 278, ['SS and RMDs go to the cash account:', 'first Savings, then Checking,', 'then Brokerage'], { anchor: 'middle', size: 10.5, color: COLOR.muted, lineHeight: 13 });
+  b += TL(381, 112, ['Savings, Checking, Brokerage', 'IRA, 401(k), Roth, HSA, 529', '', 'each holds investments that', 'grow and pay yield every year', '', 'Surplus savings -> Brokerage', 'Roth conversions:', 'IRA / 401(k) -> Roth'], { anchor: 'middle', size: 11.5, color: COLOR.text, lineHeight: 16 });
+  b += TL(381, 278, ['SS and RMDs go to the cash account:', 'first Savings or Checking,', 'else Brokerage'], { anchor: 'middle', size: 10.5, color: COLOR.muted, lineHeight: 13 });
   const right = [['Living expenses', 'from an account or Auto'], ['Federal income tax', 'paid by Auto next year'], ['State income tax', 'paid by Auto next year'], ['Medicare premiums', 'from 65, paid by Auto']];
   right.forEach(([t, s], i) => { b += box(584, 66 + i * 70, 160, 54, t, [s], { fill: COLOR.orangeLight, titleTop: 22 }); });
   left.forEach((_, i) => { b += L(178, 93 + i * 70, 282, 120 + i * 50, COLOR.slate, 1.4, { arrow: true }); });

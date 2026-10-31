@@ -53,11 +53,11 @@ bucket, so less is converted. State tax is extra.</p>
 
 <h2 id="rules">How the planner converts, step by step</h2>
 <ol>
-  <li><strong>Conversions come last in the year.</strong> They are step 7 of the
+  <li><strong>Conversions come last in the year.</strong> They are step 8 of the
     <a href="how-the-plan-works.html#yearly-steps">yearly steps</a>, after income, Social Security, RMDs, living
-    expenses, last year's income tax and this year's Medicare premiums. Paying those bills can take money from an IRA
-    or 401(k), or sell investments at a gain - both are taxable income - so the planner waits until all of them are on
-    the year's return before it measures the room left in the bucket.</li>
+    expenses, last year's income tax, this year's Medicare premiums and the reinvestment of surplus savings. Paying
+    those bills can take money from an IRA or 401(k), or sell investments at a gain - both are taxable income - so the
+    planner waits until all of them are on the year's return before it measures the room left in the bucket.</li>
   <li><strong>Who converts.</strong> Each tax payer who is alive and has not reached their RMD start age (72, 73 or 75,
     depending on year of birth). Tax payer 1 goes first, then tax payer 2. A married couple files one return, so they
     share one bucket: tax payer 2 converts only the room tax payer 1 left, for example when tax payer 1's IRA is empty
@@ -96,7 +96,7 @@ compares taxable income with the top of the bucket to find the room left:</p>
     <tr class="highlight"><td><strong>Room left</strong>: {{rothExTop}} top of the 22% bucket - {{rothExBefore}} taxable income</td><td class="num"><strong>{{rothExConvert}}</strong></td></tr>
   </tbody>
 </table></div>
-<p><strong>2. After the conversion.</strong> Step 7 converts exactly the room. A conversion is one more IRA withdrawal
+<p><strong>2. After the conversion.</strong> Step 8 converts exactly the room. A conversion is one more IRA withdrawal
 on line 4a, so the same return becomes:</p>
 <div class="table-wrap"><table>
   <thead><tr><th>Pat's 2026 return after the conversion</th><th class="num">Amount</th></tr></thead>
@@ -104,7 +104,7 @@ on line 4a, so the same return becomes:</p>
     <tr><td>Pension (line 5a)</td><td class="num">{{rothExPension}}</td></tr>
     <tr><td>IRA withdrawal for living expenses (step 5, line 4a)</td><td class="num">{{rothExIraExpenses}}</td></tr>
     <tr><td>IRA withdrawal for last year's tax (step 6, line 4a)</td><td class="num">{{rothExIraLastTax}}</td></tr>
-    <tr class="highlight"><td><strong>IRA withdrawal for the Roth conversion</strong> (step 7, line 4a)</td><td class="num"><strong>{{rothExConvert}}</strong></td></tr>
+    <tr class="highlight"><td><strong>IRA withdrawal for the Roth conversion</strong> (step 8, line 4a)</td><td class="num"><strong>{{rothExConvert}}</strong></td></tr>
     <tr><td>Total income (line 9)</td><td class="num">{{rothExAfterIncome}}</td></tr>
     <tr><td>Standard deduction (line 12e)</td><td class="num">-{{rothExDeduction}}</td></tr>
     <tr><td>Taxable income (line 15) - exactly the top of the 22% bucket</td><td class="num">{{rothExTop}}</td></tr>

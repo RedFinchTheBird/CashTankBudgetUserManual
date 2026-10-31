@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Withdrawals and Auto - CashTank Financial Planner</title>
-  <meta name="description" content="How the planner pays expenses, taxes and Medicare from your accounts, the Auto withdrawal order, the cash account and running out of money.">
+  <meta name="description" content="How the planner pays expenses, taxes and Medicare from your accounts, the Auto withdrawal order, the cash account, reinvesting surplus savings and running out of money.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -55,26 +55,29 @@ your accounts. Choosing which account to draw from changes your taxes, so the pl
 
 <h2 id="auto-order">The Auto withdrawal order</h2>
 <figure>
-  <img src="assets/img/charts/auto-withdrawal-order.svg" alt="Diagram: Auto withdraws from Savings, then Brokerage, then IRA, then 401(k), then Roth" width="760" height="250">
+  <img src="assets/img/charts/auto-withdrawal-order.svg" alt="Diagram: Auto withdraws from Savings and Checking, then Brokerage, then IRA, then 401(k), then Roth" width="760" height="250">
 </figure>
-<p>Auto uses account types in this order, moving to the next type only when the previous ones are empty:</p>
+<p>Auto uses account types in this order, moving to the next step only when the previous ones are empty:</p>
 <ol>
-  <li><strong>Savings</strong> - already-taxed money; taking it costs no tax.</li>
+  <li><strong>Savings and Checking</strong> - already-taxed money; taking it costs no tax.</li>
   <li><strong>Brokerage</strong> - only the gain on what is sold is taxed, at capital gain rates.</li>
   <li><strong>IRA</strong> - every dollar is ordinary income.</li>
   <li><strong>401(k)</strong> - every dollar is ordinary income.</li>
   <li><strong>Roth</strong> - tax free, and the longest-growing money, so it is used last.</li>
 </ol>
-<p>Within a type, all accounts and investments pay <strong>in proportion to their balances</strong>. Investments that
-<strong>lost value this year are used last</strong>, so you don't sell what is down if something else can pay.</p>
+<p>Within a step, all accounts and investments pay <strong>in proportion to their balances</strong> - Savings and
+Checking accounts together. Investments that <strong>lost value this year are used last</strong>, so you don't sell
+what is down if something else can pay.</p>
 <p>Each account type carries its own place in this order (its <em>Auto withdrawal order</em>, saved with the plan).
-Checking, HSA and 529 have no place in it, so Auto never uses them. Plans saved by earlier versions get this order
-when they are opened.</p>
+Checking works exactly like Savings; the type is there so you can enter your accounts as they really are. HSA and 529
+have no place in the order, so Auto never uses them. Plans saved by earlier versions get this order when they are
+opened.</p>
 
 <h2 id="from-account">Paying from a specific account</h2>
 <p>An expense can name an account in its <em>From</em> column instead of Auto - for example a 529 account for tuition,
 or an HSA for medical bills. That account pays first; if it runs short, Auto pays the rest. Taxes and Medicare are
-always paid by Auto.</p>
+always paid by Auto. Money an expense takes from an IRA or 401(k) counts toward that account's
+<a href="rmds.html#in-the-planner">RMD</a>.</p>
 
 <h2 id="taxes-on-withdrawals">Withdrawals can create tax</h2>
 <ul>
@@ -87,15 +90,36 @@ always paid by Auto.</p>
 </ul>
 
 <h2 id="cash-account">The cash account</h2>
-<p>Social Security and RMDs need somewhere to land. The planner uses the first <strong>Savings</strong> account that
-holds an investment; if there is none, the first <strong>Checking</strong>, then the first <strong>Brokerage</strong>.
-The plan cannot run without one of them. Money in the cash account is then available to Auto like any other savings.</p>
+<p>Social Security and RMDs need somewhere to land. The planner uses the first <strong>Savings</strong> or
+<strong>Checking</strong> account that holds an investment; if there is none, the first <strong>Brokerage</strong>.
+The plan cannot run without one of them. Auto spends the cash account first, so the year's bills are paid from Social
+Security and the RMD before anything else; at the end of the year any surplus is reinvested (below).</p>
+
+<h2 id="reinvest">Surplus savings are reinvested</h2>
+<p>RMDs and Social Security land in savings even in years you don't need all of the money. So savings don't pile up
+in cash, step 7 of every year moves whatever each <strong>Savings</strong> or <strong>Checking</strong> account gained
+during the year to the first <strong>Brokerage</strong> account that holds an investment, where it is invested by that
+account's Mix.</p>
+<ul>
+  <li>Each Savings and Checking account keeps its <strong>start-of-year balance</strong> as a steady cash cushion for
+    next year's bills. Set your starting balances to the cushion you want.</li>
+  <li>Only the year's gain moves: unspent RMDs and Social Security, income paid into the account, and its own growth
+    and yield. An account that ended the year lower keeps what is left; nothing is moved back.</li>
+  <li>Moving cash adds no tax. If the account holds something other than cash, the sale can realize a capital gain,
+    taxed like any other sale.</li>
+  <li>HSA, 529 and retirement accounts are never swept. Without a Brokerage account that holds an investment, the
+    surplus stays where it is.</li>
+  <li>Each move shows in the cash flows as <em>Reinvested Surplus</em>.</li>
+</ul>
+<p><strong>Example.</strong> Savings start the year at $10,000. A $4,219 RMD lands there and Medicare premiums of
+$2,435 are paid from it, leaving $11,784. Step 7 moves the $1,784 gain to the brokerage, and savings start the next
+year at $10,000 again.</p>
 
 <h2 id="running-out">When the money runs out</h2>
 <p>If Auto cannot pay a bill because every account it may use is empty, the plan <strong>ends in that year</strong>.
 Every scenario that runs out shows that year as its <em>Plan ends</em> year, in red in the scenario list. Money in
-Checking, HSA or 529 accounts is not used to rescue the plan - name those accounts on an expense if you intend to
-spend them.</p>
+HSA or 529 accounts is not used to rescue the plan - name those accounts on an expense if you intend to spend
+them.</p>
 
     <nav class="pager" aria-label="Previous and next pages">
       <a class="prev" href="roth-conversions.html"><span>Previous</span>Roth conversions</a>

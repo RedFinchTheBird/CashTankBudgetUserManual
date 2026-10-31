@@ -59,7 +59,7 @@ calendar year at a time, applying the same steps every year, until the last tax 
 
 <h2 id="yearly-steps">Each year, step by step</h2>
 <figure>
-  <img src="assets/img/charts/yearly-steps.svg" alt="Diagram of the seven yearly steps: market, income, Social Security, RMDs, expenses, taxes and Medicare, Roth conversions, then close the year" width="760" height="300">
+  <img src="assets/img/charts/yearly-steps.svg" alt="Diagram of the eight yearly steps: market, income, Social Security, RMDs, expenses, taxes and Medicare, reinvest surplus savings, Roth conversions, then close the year" width="760" height="380">
 </figure>
 <ol>
   <li><strong>Market.</strong> Every investment grows by its growth rate and earns its yield on the balance at the start
@@ -69,19 +69,91 @@ calendar year at a time, applying the same steps every year, until the last tax 
     and end years, into the chosen account. See <a href="income-expenses.html">income and expenses</a>.</li>
   <li><strong>Social Security.</strong> From the claim age, each tax payer's benefit is paid into the cash account.
     See <a href="social-security.html">Social Security</a>.</li>
-  <li><strong>RMDs.</strong> From the RMD start age, the required minimum is taken from each IRA and 401(k) and paid
-    into the cash account. See <a href="rmds.html">RMDs</a>.</li>
+  <li><strong>RMDs.</strong> From the RMD start age, each IRA and 401(k) must pay out its required minimum. Expenses
+    that name the account are withdrawn from it in step 5 and count toward the RMD, as the IRS counts them; the rest is
+    paid into the cash account now. Auto spends the cash account first, so the year's bills are paid from the RMD
+    before Auto touches an IRA or 401(k) again. See <a href="rmds.html">RMDs</a>.</li>
   <li><strong>Expenses.</strong> Each living expense is paid from its account or by Auto. See
     <a href="withdrawals.html">withdrawals and Auto</a>.</li>
   <li><strong>Taxes and Medicare.</strong> Auto pays last year's federal and state income tax and this year's
     Medicare premiums. A withdrawal that pays a tax bill is income of the year it is made, so it goes on this year's
     return. See <a href="taxes.html">taxes</a> and <a href="medicare-irmaa.html">Medicare</a>.</li>
+  <li><strong>Reinvest surplus.</strong> Savings and Checking accounts don't pile up money. Whatever one gained this
+    year - unspent RMDs and Social Security, income paid into it, its own growth and yield - moves to the first
+    Brokerage account that holds an investment. Each Savings and Checking account starts next year with the balance it
+    started this year. See <a href="withdrawals.html#reinvest">surplus savings are reinvested</a>.</li>
   <li><strong>Roth conversions.</strong> If the scenario fills a Roth bucket, IRA / 401(k) money is moved to a Roth
     until taxable income reaches the bucket's limit. This comes last, after every other withdrawal of the year, so the
     bucket is filled exactly. See <a href="roth-conversions.html">Roth conversions</a>.</li>
 </ol>
 <p>The planner then closes the year: it works out this year's federal and state tax, to be paid next year, and records
 account balances, cash flows, income and expenses, net asset value and the tax forms.</p>
+
+<h3 id="example">Example: one year for Pat</h3>
+<p>Pat is single and 76, retired at 65 and claimed Social Security at 70. The plan uses the default
+<a href="reference-tables.html#general-settings">General Settings</a> and the 2026 tax tables. Pat starts 2026 - plan
+year 1 - with:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Pat's plan</th><th>Details</th></tr></thead>
+  <tbody>
+    <tr><td>Savings</td><td>$20,000 in cash. This is the cash account.</td></tr>
+    <tr><td>Brokerage</td><td>$200,000 stock fund: 6% growth, 2% dividends (cost basis $150,000)</td></tr>
+    <tr><td>IRA</td><td>$237,000 bond fund: 1% growth, 4% interest</td></tr>
+    <tr><td>Pension</td><td>$24,000 a year, paid into savings</td></tr>
+    <tr><td>Social Security</td><td>$2,500 a month, Pat's estimate for a claim at 70</td></tr>
+    <tr><td>Living expenses</td><td>$40,000, paid by Auto</td></tr>
+    <tr><td>Travel</td><td>$4,000, paid from the IRA (the IRA is named in the expense's <em>From</em> column)</td></tr>
+  </tbody>
+</table></div>
+<p>Here is what each step does. The last column follows the savings balance.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Step</th><th>What happens in 2026</th><th class="num">Savings</th></tr></thead>
+  <tbody>
+    <tr><td>Start</td><td>Balance on January 1</td><td class="num">$20,000.00</td></tr>
+    <tr><td>1. Market</td><td>The stock fund grows $12,000 and pays $4,000 in dividends, which are reinvested and
+      taxable (line 3a). The IRA earns $11,850 (1% + 4%), not taxed inside the IRA. Cash earns nothing.</td><td class="num">$20,000.00</td></tr>
+    <tr><td>2. Income</td><td>The $24,000 pension is paid into savings.</td><td class="num">$44,000.00</td></tr>
+    <tr><td>3. Social Security</td><td>$2,500 &times; 12 &times; 85% (the Social Security adjustment factor) =
+      $25,500, paid into savings.</td><td class="num">$69,500.00</td></tr>
+    <tr class="highlight"><td>4. RMDs</td><td>Pat must take $237,000 (the IRA's balance at the end of last year) /
+      23.7 = <strong>$10,000</strong> from the IRA. The $4,000 trip is paid from the IRA in step 5 and counts toward
+      it, so step 4 takes the other $6,000, into savings.</td><td class="num">$75,500.00</td></tr>
+    <tr><td>5. Expenses</td><td>Auto pays the $40,000 of living expenses from savings, which it uses first. The $4,000
+      trip comes from the IRA.</td><td class="num">$35,500.00</td></tr>
+    <tr><td>6. Taxes and Medicare</td><td>Auto pays $3,182.50 federal and $1,303.50 state income tax (see the note
+      below) and $2,434.80 of Medicare premiums ($202.90 a month; Pat's income is below the first IRMAA tier).</td><td class="num">$28,579.20</td></tr>
+    <tr class="highlight"><td>7. Reinvest surplus</td><td>Savings gained $8,579.20 since January 1. It moves to the
+      stock fund, and savings are back at their start-of-year balance.</td><td class="num">$20,000.00</td></tr>
+    <tr><td>8. Roth conversions</td><td>None. Pat's RMDs have started, and conversions stop at the RMD age.</td><td class="num">$20,000.00</td></tr>
+  </tbody>
+</table></div>
+<p><strong>Closing the year.</strong> Pat's 2026 return:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Pat's 2026 return</th><th class="num">Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Pension (line 5a)</td><td class="num">$24,000.00</td></tr>
+    <tr><td>IRA distributions (line 4a): $6,000 RMD + $4,000 trip</td><td class="num">$10,000.00</td></tr>
+    <tr><td>Qualified dividends (line 3a)</td><td class="num">$4,000.00</td></tr>
+    <tr><td>Taxable Social Security (line 6b), part of the $25,500 paid</td><td class="num">$18,737.50</td></tr>
+    <tr><td>Total income (line 9)</td><td class="num">$56,737.50</td></tr>
+    <tr><td>Deductions: $16,100 standard + $2,050 age 65 add-on + $6,000 senior deduction</td><td class="num">-$24,150.00</td></tr>
+    <tr><td>Taxable income (line 15)</td><td class="num">$32,587.50</td></tr>
+    <tr><td>Federal tax (line 16) - the dividends fall in the 0% capital gain bracket</td><td class="num">$3,182.50</td></tr>
+    <tr><td>State tax at the 4% placeholder rate</td><td class="num">$1,303.50</td></tr>
+  </tbody>
+</table></div>
+<ul>
+  <li><strong>This year's tax is paid next year.</strong> The $3,182.50 and $1,303.50 on the 2026 return are paid in
+    step 6 of 2027.</li>
+  <li><strong>Plan year 1 pays an estimate.</strong> The plan has no 2025 return, so step 6 of 2026 pays an estimate
+    of 2025's tax: the tax on 2026's income so far. Pat's taxes came from cash and there was no Roth conversion, so the
+    estimate equals the 2026 tax. From 2027 on, step 6 pays the tax worked out when the previous year closed.</li>
+  <li><strong>The trip counted toward the RMD.</strong> The IRA paid out $10,000 in all. Without the credit it would
+    have paid $14,000 - the full RMD plus the trip - and Pat would have reported $4,000 more IRA income.</li>
+  <li><strong>Year-end balances:</strong> savings $20,000.00; brokerage $224,579.20 ($200,000 + $12,000 growth +
+    $4,000 dividends + $8,579.20 reinvested); IRA $238,850.00 ($237,000 + $11,850 - $10,000). Net asset value:
+    $483,429.20.</li>
+</ul>
 
 <h2 id="inflation">Inflation and today's dollars</h2>
 <figure>
@@ -90,11 +162,15 @@ account balances, cash flows, income and expenses, net asset value and the tax f
 <p>All amounts are entered in today's dollars. Plan year 1 uses them as entered; each later year multiplies them by
 (1 + inflation rate) for every year since plan year 1. Four rates are used:</p>
 <ul>
-  <li>each income and expense's own <strong>inflation rate</strong> (default: the general rate);</li>
-  <li>the <strong>general inflation rate</strong> for Social Security cost-of-living increases;</li>
+  <li>each income and expense's own <strong>inflation rate</strong> (default: the general inflation rate);</li>
+  <li>the <strong>Social Security COLA rate</strong> for Social Security cost-of-living increases;</li>
   <li>the <strong>tax forms inflation rate</strong> for tax brackets, deductions, Roth buckets and IRMAA thresholds;</li>
   <li>the <strong>Medicare premium inflation rate</strong> for Medicare premiums.</li>
 </ul>
+<p>The <strong>general inflation rate</strong> itself is only the starting rate given to each new income and expense.
+Social Security has its own rate because its yearly COLA follows a government price index (CPI-W), not your own
+costs. New plans use 2.5%, a little below the 3% general rate, so the benefit slowly buys less - a cautious
+assumption. See <a href="social-security.html">Social Security</a>.</p>
 <p>Results are shown in the dollars of each year (nominal dollars). To compare a far-future amount with today, divide
 by the growth from inflation; at 3% a dollar in year 30 buys about what 42 cents buys today.</p>
 
@@ -138,7 +214,7 @@ real 2000-2026 history, starting at the worst point for your holdings). <strong>
     qualified dividends and capital gains. Their side effects on the senior deduction, Social Security and later
     Medicare premiums are counted, but the bucket is not lowered to avoid an IRMAA tier.</li>
   <li><strong>No rebalancing.</strong> Each investment grows on its own; new money is split by Mix and withdrawals are
-    proportional to balance.</li>
+    proportional to balance. The only automatic move is the yearly reinvestment of surplus savings (step 7).</li>
 </ul>
 
     <nav class="pager" aria-label="Previous and next pages">
