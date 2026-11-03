@@ -89,6 +89,19 @@ enter them here.</p>
 <p>Because wages already stop at retirement, a salary can simply run from <code>SOP</code> to <code>YORTP1</code>.
 When a scenario uses a later retirement age, the salary automatically runs longer.</p>
 
+<h3 id="income-rows">Adding and deleting income</h3>
+<p>Each category row has buttons to rename the category, add a category and delete it; each income row has buttons
+to add an income row to its category and delete it. Because the buttons are on the rows, a plan always keeps at
+least one income category and every category at least one income row:</p>
+<ul>
+  <li>A new category starts with a <em>New Income</em> row of $0 from the first tax payer, paid into the account
+    that receives Social Security. Fill it in, or leave it at $0.</li>
+  <li>The last category, and the last income row of a category, can't be deleted. Set an income's amount to 0 to
+    leave it out of the plan; a $0 income changes nothing.</li>
+  <li>Deleting a tax payer deletes their wages and pension, and deleting an account deletes the income paid into it.
+    A category left empty gets a $0 row.</li>
+</ul>
+
 <div class="callout note">
   <span class="title">No tax withholding</span>
   Income is paid in full. The planner works out each year's federal and state tax at the end of the year and pays it
@@ -99,7 +112,7 @@ When a scenario uses a later retirement age, the salary automatically runs longe
 <div class="table-wrap"><table>
   <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
   <tbody>
-    <tr><td>Category</td><td>Groups your expenses (Essential and Discretionary to start).</td></tr>
+    <tr><td>Category</td><td>Groups your expenses. A new plan starts with Housing, Transportation, Food, Healthcare, Insurance, Personal &amp; Lifestyle, and Travel &amp; Giving.</td></tr>
     <tr><td>Description</td><td>A name such as "Groceries" or "Travel".</td></tr>
     <tr><td>Start, End</td><td>The first and last year of the expense (both included); a calendar year or a milestone.</td></tr>
     <tr><td>From</td><td><strong>Auto</strong> (recommended) or a specific account. If that account runs short, Auto pays the rest.</td></tr>
@@ -111,6 +124,18 @@ When a scenario uses a later retirement age, the salary automatically runs longe
 <p>Paying an expense is a withdrawal. Selling from a brokerage account can create a capital gain, and taking money from
 an IRA or 401(k) is taxable income. Both go on that year's tax return, which is paid the next year. See
 <a href="withdrawals.html">withdrawals and Auto</a>.</p>
+
+<h3 id="expense-rows">Adding and deleting expenses</h3>
+<p>The Expenses tab works like the Income tab. Each category row has buttons to rename the category, add a category
+and delete it; each expense row has buttons to add an expense row to its category and delete it. A plan always keeps
+at least one expense category and every category at least one expense row:</p>
+<ul>
+  <li>A new category starts with a <em>New Expense</em> row of $0, paid by Auto. Fill it in, or leave it at $0.</li>
+  <li>A new expense row is paid from the same account as the row whose button you clicked.</li>
+  <li>The last category, and the last expense row of a category, can't be deleted. Set an expense's amount to 0 to
+    leave it out of the plan; a $0 expense changes nothing.</li>
+  <li>Deleting an account deletes the expenses paid from it. A category left empty gets a $0 row paid by Auto.</li>
+</ul>
 
 <h2 id="dates">Choosing start and end years</h2>
 <figure class="screenshot">
@@ -125,7 +150,7 @@ falls in and each tax payer's age; the bottom list has every plan year with the 
 <p>When you run the plan, it stops with a message if:</p>
 <ul>
   <li>an income's <em>From</em> is not a current tax payer or pension;</li>
-  <li>an income's <em>To</em> is not an account with at least one investment;</li>
+  <li>an income with an amount has a <em>To</em> that is not an account with at least one investment;</li>
   <li>an expense's <em>From</em> is neither Auto nor an existing account;</li>
   <li>a Start or End is not a valid year or milestone.</li>
 </ul>

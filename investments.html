@@ -64,8 +64,8 @@
 
 <h2 id="institutions">Financial institutions</h2>
 <p>A bank, brokerage or fund company - for example Vanguard or your local bank. Account names in drop-downs and
-results show the institution, such as "Joint Savings (Local Bank)". Deleting an institution deletes its accounts and
-investments.</p>
+results show the institution, such as "Joint Savings (Local Bank)". Deleting an institution deletes its accounts,
+with everything linked to them (see below); the confirmation lists what goes.</p>
 
 <h2 id="accounts">Accounts</h2>
 <div class="table-wrap"><table>
@@ -76,8 +76,8 @@ investments.</p>
     <tr><td>Trustee</td><td>The owner: a tax payer, or <strong>Joint</strong> (only offered with two tax payers). For an IRA, 401(k) or Roth, the owner's age decides when RMDs start and when Roth conversions stop.</td></tr>
   </tbody>
 </table></div>
-<p>Deleting an account deletes its investments. Income paid into it is left without a <em>To</em> account (pick a new
-one before running the plan), and expenses paid from it switch to Auto.</p>
+<p>Deleting an account deletes its investments, the income paid into it and the expenses paid from it; the
+confirmation lists what goes. An income category left empty gets a $0 row.</p>
 
 <div class="table-wrap"><table>
   <thead><tr><th>Type</th><th>Tax treatment</th><th>How the planner uses it</th></tr></thead>
@@ -98,10 +98,10 @@ one before running the plan), and expenses paid from it switch to Auto.</p>
   <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
   <tbody>
     <tr><td>Name, Ticker</td><td>For your reference, for example "Total Stock Market" / VTSAX.</td></tr>
-    <tr><td>Asset class</td><td><strong>Required.</strong> DomStocks, IntStocks, Bonds, MuniBonds, Gold, Cash or a class you add. It supplies the growth and yield when you leave them blank, the down-market history, and the 1040 boxes for taxable accounts. See <a href="asset-classes.html">asset classes</a>.</td></tr>
+    <tr><td>Asset class</td><td><strong>Required.</strong> DomStocks, IntStocks, Bonds, MuniBonds, Gold or Cash. It supplies the growth and yield when you leave them blank, the down-market history, and the 1040 boxes for taxable accounts. See <a href="asset-classes.html">asset classes</a>.</td></tr>
     <tr><td>Growth</td><td>Expected price growth, % per year. Leave blank to use the asset class's long-run average (6.49% for domestic stocks).</td></tr>
     <tr><td>Yield</td><td>Expected dividends or interest, % per year, reinvested. Leave blank to use the class average (1.75% for domestic stocks).</td></tr>
-    <tr><td>Mix</td><td>How new money paid into the account (income, Social Security, RMDs, Roth conversions) is split between its investments. The mixes in an account must add up to 100%. New investments get whatever is left.</td></tr>
+    <tr><td>Mix</td><td>How new money paid into the account (income, Social Security, RMDs, Roth conversions) is split between its investments. Either set a mix for every investment in the account, adding up to 100%, or leave every mix blank to split new money evenly. New investments get whatever is left of 100% (blank when the others are blank). Deleting an investment can leave the rest short of 100%; the confirmation warns you.</td></tr>
     <tr><td>Starting basis</td><td>What you paid for the investment (its cost basis). Used to work out capital gains when it is sold in a taxable account. Ignored for IRA, 401(k), Roth, HSA and 529.</td></tr>
     <tr><td>Starting balance</td><td>Today's value.</td></tr>
   </tbody>
@@ -127,7 +127,7 @@ one before running the plan), and expenses paid from it switch to Auto.</p>
 <h2 id="checks">Checks before a run</h2>
 <ul>
   <li>Every investment must have an asset class, and every class you use must have complete performance history.</li>
-  <li>Each account's investment mixes must add up to 100%.</li>
+  <li>In each account, either every investment's mix is blank, or every mix is set and they add up to 100%.</li>
   <li>The plan needs a Savings, Checking or Brokerage account with at least one investment to receive Social Security
     and RMDs.</li>
 </ul>
